@@ -59,6 +59,8 @@
 名称（name）| 为空使用 ‘&amp;nbsp;’ 
 聊天内容（content）| -
 
+Example:
+
 ```html
     <div class="cright cmsg">
         <img class="headIcon radius" ondragstart="return false;"  oncontextmenu="return false;"  src="./img/B.jpg" />
@@ -69,8 +71,7 @@
 
 ### 系统提示
 
-![提示](https://i.loli.net/2018/12/08/5c0bc856c97d9.png)
-
+![提示](https://i.loli.net/2018/12/08/5c0bcfbbbce7b.png)
 
 类名 | 效果
 --- |---
@@ -80,3 +81,16 @@ tips-success|成功提示
 tips-info|信息提示
 tips-warning|警告提示
 tips-danger|错误/危险提示
+
+Example:
+
+```html
+    <div class="tips">
+        <span class="tips-danger">系统消息：左/右边长消息被管理员批判一番……</span>
+    </div>
+
+    <div class="tips">
+        <span>系统消息：normal</span>
+    </div>
+```
+
