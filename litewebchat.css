@@ -48,6 +48,22 @@
   display: block;
   line-height: 18px;
 }
+.lite-chatbox .name .htitle{
+  display: inline-block;
+  padding: 0 3px 0 3px;
+  background-color: #cccccc;
+  color: #ffffff;
+  -moz-border-radius: 4px;
+  -webkit-border-radius: 4px;
+  border-radius: 4px;
+  margin-right: 4px;
+  font-size: 11px;
+  overflow: hidden;
+  text-overflow:ellipsis;
+  white-space: nowrap;
+  vertical-align: middle;
+  max-width: 50px;
+}
 /* 消息内容 */
 .lite-chatbox .content{
   word-break: break-all;
@@ -159,3 +175,11 @@
 .lite-chatbox .tips .tips-danger{
   background-color: #e24d48;
 }
+.lite-chatbox .name .admin{
+  background-color: #72D6A0;
+}
+.lite-chatbox .name .owner{
+  background-color: #F2BF25;
+}
+
+
