@@ -2,6 +2,9 @@
 
 ![演示](https://i.loli.net/2018/12/08/5c0bba10d25da.png)
 
+
+[~~性感聊天在线观看~~（在线演示）](https://lab.morfans.cn/LiteWebChat_Frame/chat_example.html)
+
 [本框架](https://github.com/MorFansLab/LiteWebChat_Frame) 大部分聊天对话所要求的特性已完成，能够助你快速开发聊天类对话界面
 
 ## 使用 ~~指南~~ (指北)
@@ -17,13 +20,13 @@
 #### 直接引用
 
 ```html
-<link type="text/css" href="//lab.morfans.cn/LiteWebChat_Frame/litewebchat.min.css" rel="stylesheet" />
+<link type="text/css" href="https://lab.morfans.cn/LiteWebChat_Frame/litewebchat.min.css" rel="stylesheet" />
 ```
 
 或
 
 ```html
-<link type="text/css" href="//lab.morfans.cn/LiteWebChat_Frame/litewebchat.css" rel="stylesheet" />
+<link type="text/css" href="https://lab.morfans.cn/LiteWebChat_Frame/litewebchat.css" rel="stylesheet" />
 ```
 
 #### 创建容器
