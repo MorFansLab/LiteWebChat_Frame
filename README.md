@@ -62,7 +62,9 @@
 ##### 对话框和输入框
 
 ```html
+<!-- 父容器 -->
 <div class="lite-chatmaster">
+    <!-- 聊天栏 -->
     <div class="lite-chatbox">
         ...
     </div>
@@ -77,6 +79,30 @@
         ...
     </div>
 </div>
+```
+
+**注意：使用输入框时需要手动指定其父容器大小。**
+
+Example:
+
+```css
+/* 全局，当整个HTML页面都是聊天窗口的时候取消body的margin 和 padding，这样比较好看 */
+
+html,
+body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+}
+
+
+/* 手动指定其父容器大小 */
+
+.lite-chatmaster {
+    height: 100%;
+    width: 100%;
+}
 ```
 
 ### 兼容性
