@@ -56,7 +56,7 @@ oLine.onmousedown = function(ev) {
         var diff = iEvent.clientY - dy; //移动的距离（向上滑时为负数,下滑时为正数）
         if (100 < (upperHeight + diff) && 100 < (downHeight - diff)) {
             //两个div的最小高度均为100px
-            upperChild.style.height = (upperHeight + diff) + 'px';
+            upperChild.style.height = `calc(100% - ${downHeight - diff}px)`;
             downChild.style.height = (downHeight - diff) + 'px';
         }
     };
@@ -75,8 +75,10 @@ emojiBtn.onclick = function() {
 
 // 全屏编辑文字
 editFullScreen.onclick = function() {
-    nowHeight = downChild.clientHeight;
-    downChild.style.height = "100%";
+    downHeight = downChild.clientHeight;
+    upperHeight = upperChild.clientHeight;
+    downChild.style.height = `100%`;
+    upperChild.style.height = "0px";
     editFullScreen.style.display = "none";
     exitFullScreen.style.display = "block";
     oLine.style.display = "none";
@@ -84,7 +86,15 @@ editFullScreen.onclick = function() {
 
 // 退出全屏编辑文字
 exitFullScreen.onclick = function() {
-    downChild.style.height = `${nowHeight}px`;
+    // 防呆不防傻，用于避免上部聊天窗口被压到没有高度后出现异常
+    if (upperHeight != 0) {
+        downChild.style.height = `${downHeight}px`;
+        upperChild.style.height = `calc(100% - ${downHeight}px)`;
+    } else {
+        upperChild.style.height = "calc(100% - 150px)";
+        downChild.style.height = "150px";
+    }
+
     exitFullScreen.style.display = "none";
     editFullScreen.style.display = "block";
     oLine.style.display = "block";

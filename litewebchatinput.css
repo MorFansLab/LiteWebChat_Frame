@@ -1,18 +1,7 @@
-/* 全局 */
-
-html,
-body {
-    height: 100%;
-    margin: 0;
-    padding: 0;
-    overflow: hidden;
-}
-
-
 /* 聊天区域 */
 
 .lite-chatbox {
-    height: calc(100vh - 150px);
+    height: calc(100% - 150px);
 }
 
 .lite-chatbox :last-child {
@@ -25,7 +14,7 @@ body {
 .lite-chatinput {
     width: 100%;
     height: 150px;
-    position: fixed;
+    position: relative;
     bottom: 0px;
     background-color: #fff;
 }
@@ -36,9 +25,10 @@ body {
 .lite-chatinput hr {
     cursor: s-resize;
     margin: 0 auto;
-    border: 0;
-    height: 3px;
-    background: rgba(0, 0, 0, 0.2);
+    border-width: 1px 0px 0px 0px;
+    border-color: rgba(0, 0, 0, 0.2);
+    height: 5px;
+    background: #fff;
 }
 
 
@@ -59,7 +49,7 @@ body {
 /* 发送按钮 */
 
 .lite-chatinput .send {
-    position: fixed;
+    position: absolute;
     bottom: 12px;
     right: 40px;
     padding: 4px 20px 4px 20px;
@@ -70,6 +60,10 @@ body {
     -webkit-box-shadow: 5px 5px 15px 0 rgba(102, 102, 102, 0.1);
     box-shadow: 5px 5px 15px 0 rgba(102, 102, 102, 0.1);
     border: none;
+    border-radius: 6px;
+    /* 老的 Firefox */
+    -moz-border-radius: 6px;
+    -webkit-border-radius: 6px;
 }
 
 .lite-chatinput .send:hover {
