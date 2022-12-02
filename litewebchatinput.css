@@ -141,10 +141,10 @@
 /* Firefox */
 
 .lite-chatbox,
-.lite-chatinput,
-.lite-chattools {
-    scrollbar-color: rgba(144, 147, 153, .3) rgba(144, 147, 153, .05);
+.lite-chatinput textarea,
+.scroll {
     scrollbar-width: thin;
+    scrollbar-color: rgba(144, 147, 153, .3) rgba(144, 147, 153, .05);
 }
 
 
