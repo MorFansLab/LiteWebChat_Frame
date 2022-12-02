@@ -22,7 +22,7 @@
 
 /* 聊天区域和输入框的分界线 */
 
-.lite-chatinput hr {
+.lite-chatinput .boundary {
     cursor: s-resize;
     margin: 0 auto;
     border-width: 1px 0px 0px 0px;
@@ -34,7 +34,7 @@
 
 /* 输入框 */
 
-.lite-chatinput textarea {
+.lite-chatinput .chatinput {
     position: relative;
     margin: 0px 3px 0px 3px;
     width: calc(100% - 6px);
