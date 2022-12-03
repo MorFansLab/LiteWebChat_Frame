@@ -109,7 +109,8 @@
 .lite-chatbox-tool {
     /* border: 5px solid red; */
     position: absolute;
-    bottom: 20px;
+    /* bottom: 20px; */
+    margin-left: 3px;
     z-index: 3;
 }
 

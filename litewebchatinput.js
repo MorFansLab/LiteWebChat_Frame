@@ -11,7 +11,7 @@ var toolMusk = document.getElementById("toolMusk");
 // Emoji Mart 设置及唤起
 var pickerOptions = {
     "locale": "zh",
-    onEmojiSelect: function(e) {
+    onEmojiSelect: function (e) {
         // console.log(e.native);            
         emojiMart.style.display = "none";
         toolMusk.style.display = "none";
@@ -46,12 +46,12 @@ function insertAtCursor(myField, myValue) {
 }
 
 // 调整聊天区域和输入框区域比例的函数
-oLine.onmousedown = function(ev) {
+oLine.onmousedown = function (ev) {
     var iEvent = ev || event;
     var dy = iEvent.clientY; //当你第一次单击的时候，存储y轴的坐标。//相对于浏览器窗口        
     var upperHeight = upperChild.offsetHeight;
     var downHeight = downChild.offsetHeight;
-    document.onmousemove = function(ev) {
+    document.onmousemove = function (ev) {
         var iEvent = ev || event;
         var diff = iEvent.clientY - dy; //移动的距离（向上滑时为负数,下滑时为正数）
         if (100 < (upperHeight + diff) && 100 < (downHeight - diff)) {
@@ -60,7 +60,7 @@ oLine.onmousedown = function(ev) {
             downChild.style.height = (downHeight - diff) + 'px';
         }
     };
-    document.onmouseup = function() {
+    document.onmouseup = function () {
         document.onmousedown = null;
         document.onmousemove = null;
     };
@@ -68,13 +68,26 @@ oLine.onmousedown = function(ev) {
 }
 
 // 显示表情输入框
-emojiBtn.onclick = function() {
+emojiBtn.onclick = function () {
     emojiMart.style.display = "block";
     toolMusk.style.display = "block";
+
+    let emojiHeight = emojiMart.offsetHeight;
+    var downHeight = downChild.clientHeight;
+    var upperHeight = upperChild.clientHeight;
+    
+    if (emojiHeight < upperHeight) {
+        emojiMart.style.bottom = `${downHeight + 3}px`
+        emojiMart.style.top = '';
+    }else{
+        emojiMart.style.bottom = ''
+        emojiMart.style.top = '10px';
+    }
+
 }
 
 // 全屏编辑文字
-editFullScreen.onclick = function() {
+editFullScreen.onclick = function () {
     downHeight = downChild.clientHeight;
     upperHeight = upperChild.clientHeight;
     downChild.style.height = `100%`;
@@ -85,7 +98,7 @@ editFullScreen.onclick = function() {
 }
 
 // 退出全屏编辑文字
-exitFullScreen.onclick = function() {
+exitFullScreen.onclick = function () {
     // 防呆不防傻，用于避免上部聊天窗口被压到没有高度后出现异常
     if (upperHeight != 0) {
         downChild.style.height = `${downHeight}px`;
@@ -101,7 +114,7 @@ exitFullScreen.onclick = function() {
 }
 
 // 隐藏musk和表情输入框
-toolMusk.onclick = function() {
+toolMusk.onclick = function () {
     emojiMart.style.display = "none";
     toolMusk.style.display = "none";
 }
