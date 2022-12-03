@@ -1,11 +1,13 @@
-## 轻网页聊天框架
+# 轻网页聊天框架
 
 ![演示](https://i.loli.net/2018/12/08/5c0bba10d25da.png)
 
 
-[~~性感聊天在线观看~~（在线演示）](https://lab.morfans.cn/LiteWebChat_Frame/chat_example.html)
+- [~~性感聊天在线观看~~（在线演示）](https://lab.morfans.cn/LiteWebChat_Frame/chat_example.html)
 
-[本框架](https://github.com/MorFansLab/LiteWebChat_Frame) 大部分聊天对话所要求的特性已完成，能够助你快速开发聊天类对话界面
+- [带输入框的演示（在线演示）](https://lab.morfans.cn/LiteWebChat_Frame/chat_with_inputarea_example.html)
+
+[本框架](https://github.com/MorFansLab/LiteWebChat_Frame) 大部分聊天对话所要求的样式特性已完成，能够助你快速开发聊天类对话界面
 
 ## 使用 ~~指南~~ (指北)
 
@@ -22,32 +24,22 @@
 ##### 对话框
 
 ```html
+<!-- 两个任选一个 github pages -->
 <link type="text/css" href="https://lab.morfans.cn/LiteWebChat_Frame/litewebchat.min.css" rel="stylesheet" />
-```
 
-或
-
-```html
-<link type="text/css" href="https://lab.morfans.cn/LiteWebChat_Frame/litewebchat.css" rel="stylesheet" />
+<!-- 两个任选一个 jsdelivr -->
+<link type="text/css" href="https://cdn.jsdelivr.net/gh/MorFansLab/LiteWebChat_Frame/litewebchat.min.css" rel="stylesheet" />
 ```
 
 ##### 输入框
 
-```html
-<link type="text/css" href="https://cdn.jsdelivr.net/gh/YubaC/LiteWebChat_Frame/litewebchatinput.min.css" rel="stylesheet" />
-<script src="https://cdn.jsdelivr.net/npm/emoji-mart@latest/dist/browser.js"></script>
-<script src="https://cdn.jsdelivr.net/gh/YubaC/LiteWebChat_Frame/litewebchatinput.min.js"></script>
-```
-
-或
+> **注意：对话框可以单独被使用，输入框必须和对话框配合使用。**
 
 ```html
-<link type="text/css" href="https://cdn.jsdelivr.net/gh/YubaC/LiteWebChat_Frame/litewebchatinput.css" rel="stylesheet" />
+<link type="text/css" href="https://cdn.jsdelivr.net/gh/MorFansLab/LiteWebChat_Frame/litewebchatinput.min.css" rel="stylesheet" />
 <script src="https://cdn.jsdelivr.net/npm/emoji-mart@latest/dist/browser.js"></script>
-<script src="https://cdn.jsdelivr.net/gh/YubaC/LiteWebChat_Frame/litewebchatinput.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/MorFansLab/LiteWebChat_Frame/litewebchatinput.min.js"></script>
 ```
-
-**注意：对话框可以单独被使用，输入框必须和对话框配合使用。**
 
 #### 创建容器
 
@@ -95,7 +87,6 @@ body {
     padding: 0;
     overflow: hidden;
 }
-
 
 /* 手动指定其父容器大小 */
 
