@@ -1,5 +1,5 @@
 /*!
- * LiteWebChat_Frame v2.1.0
+ * LiteWebChat_Frame v2.1.1
  * MorFans Lab(c) 2017
  *
  * BY:SuperPaxxs & Haswikr
@@ -48,6 +48,9 @@
   display: block;
   line-height: 18px;
 }
+.lite-chatbox .name > span {
+  vertical-align: middle;
+}
 .lite-chatbox .name .htitle{
   display: inline-block;
   padding: 0 3px 0 3px;
@@ -74,6 +77,7 @@
   font-size: 15px;
   padding: 10px 15px;
   line-height: 20px;
+  white-space: pre-wrap;
   /* -moz-border-radius: 6px; 
   -webkit-border-radius: 6px; 
   border-radius: 6px; */
