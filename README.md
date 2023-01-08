@@ -2,17 +2,15 @@
 
 ![演示](https://i.loli.net/2018/12/08/5c0bba10d25da.png)
 
+在线演示：
 
-- [~~性感聊天在线观看~~（在线演示）](https://lab.morfans.cn/LiteWebChat_Frame/chat_example.html)
-
-- [带输入框的演示（在线演示）](https://lab.morfans.cn/LiteWebChat_Frame/chat_with_inputarea_example.html)
-
-- [带输入框的演示（在线演示）](https://lab.morfans.cn/LiteWebChat_Frame/chat_with_inputarea_module_example.html)
-
+- [~~性感聊天在线观看~~](https://lab.morfans.cn/LiteWebChat_Frame/chat_example.html)
+- [带输入框表情选取](https://lab.morfans.cn/LiteWebChat_Frame/chat_with_inputarea_example.html)
+- [带输入框表情选取简单JS渲染](https://lab.morfans.cn/LiteWebChat_Frame/chat_with_inputarea_module_example.html)
 
 [本框架](https://github.com/MorFansLab/LiteWebChat_Frame) 大部分聊天对话所要求的样式特性已完成，能够助你快速开发聊天类对话界面
 
-## 使用 ~~指南~~ (指北)
+## 使用~~指南~~ (指北)
 
 ### 安装
 
@@ -92,11 +90,83 @@ body {
 }
 
 /* 手动指定其父容器大小 */
-
 .lite-chatmaster {
     height: 100%;
     width: 100%;
 }
+```
+
+可以参考配合一下简易的 JS 消息渲染：
+
+- 效果和使用参考：[带输入框表情选取简单JS渲染](https://lab.morfans.cn/LiteWebChat_Frame/chat_with_inputarea_module_example.html)
+
+字段：
+
+- messageType：消息类型
+  - 可选值：
+    - 系统提示
+      - tipsNormal
+      - tipsPrimary
+      - tipsSuccess
+      - tipsInfo
+      - tipsWarning
+      - tipsDanger
+    - 消息
+      - text：普通消息类型
+      - raw：不会转义消息类型
+- html：object 内容
+- headIcon：头像图片地址
+- diamond：是否使用方块头像样式
+  - bool
+- name：用户名
+- position：消息位置
+  - left
+  - right
+- htitleType: 头衔类型
+  - admin
+  - owner
+  - 不写则是默认
+- htitle：头衔标题
+
+```html
+<!-- 抽离的聊天信息组件 -->
+<script src="lite-chatbox.min.js"></script>
+<script>
+  const htmls = [
+      {
+          messageType: 'tipsDanger',
+          html: '从我做过的类聊天需求来看，聊天消息要么是纯文本，要么是富文本。所以我抽离出来的消息渲染组件默认了消息是富文本。如果想发送HTML请自行魔改。'
+      },
+      {
+          messageType: 'raw',
+          headIcon: './img/A.jpg',
+          name: '图片消息2',
+          position: 'left',
+          html: `<img src="./img/img.png"><br>图片带文字是可以的 <del>（废话）</del>`,
+      },
+      {
+          messageType: 'text',
+          headIcon: './img/A.jpg',
+          name: '全符号测试',
+          position: 'left',
+          html: '。，；？：！‘’“”@ˆ.,;?:!\'"〝〞﹫ˇ'
+      },
+  ];
+  beforeRenderingHTML(htmls, '.lite-chatbox');
+</script>
+<script>
+  document.querySelector('.send').onclick = function () {
+      htmls.push({
+          messageType: 'text',
+          headIcon: './img/B.jpg',
+          name: 'SuperPaxxs',
+          position: 'right',
+          html: document.querySelector('.chatinput').value
+      })
+      document.querySelector('.chatinput').value = '';
+      beforeRenderingHTML(htmls, '.lite-chatbox');
+  };
+</script>
 ```
 
 ### 兼容性
@@ -105,7 +175,7 @@ body {
 
 对于IE浏览器请微修改右对话气泡背景即可使用
 
-[参考](http://browsershots.org/https://lab.morfans.cn/LiteWebChat_Frame/chat_example.html) 
+[参考](http://browsershots.org/https://lab.morfans.cn/LiteWebChat_Frame/chat_example.html)
 
 ## 组件
 
@@ -113,13 +183,13 @@ body {
 
 ![气泡](https://i.loli.net/2018/12/08/5c0bc50bd0674.png)
 
-组件（类名） | Class 附加类名 / 备注
---- |---
-聊天气泡组件（cmsg）|cleft（左边） / cright（右边）
-头像 (headIcon)| 默认方形 / radius（圆形头像）
-头衔 （htitle）| 默认成员头衔 / admin（管理头衔） / owner（群主头衔）
-名称（name）| 为空使用 ‘&amp;nbsp;’ 
-聊天内容（content）| -
+| 组件（类名）         | Class 附加类名 / 备注                                |
+| -------------------- | ---------------------------------------------------- |
+| 聊天气泡组件（cmsg） | cleft（左边） / cright（右边）                       |
+| 头像 (headIcon)      | 默认方形 / radius（圆形头像）                        |
+| 头衔 （htitle）      | 默认成员头衔 / admin（管理头衔） / owner（群主头衔） |
+| 名称（name）         | 为空使用 ‘&amp;nbsp;’                                |
+| 聊天内容（content）  | -                                                    |
 
 Example:
 
@@ -135,14 +205,14 @@ Example:
 
 ![提示](https://i.loli.net/2018/12/08/5c0bcfbbbce7b.png)
 
-类名 | 效果
---- |---
-tips|正常
-tips-primary|首要的提示
-tips-success|成功提示
-tips-info|信息提示
-tips-warning|警告提示
-tips-danger|错误/危险提示
+| 类名         | 效果          |
+| ------------ | ------------- |
+| tips         | 正常          |
+| tips-primary | 首要的提示    |
+| tips-success | 成功提示      |
+| tips-info    | 信息提示      |
+| tips-warning | 警告提示      |
+| tips-danger  | 错误/危险提示 |
 
 Example:
 
@@ -160,12 +230,12 @@ Example:
 
 ![输入框](https://i.postimg.cc/t4G1Crj6/input.png)
 
-组件（HTML标签） | 是否必备 | 类名 | 备注
---- |--- |--- |---
-文字输入框（&lt;textarea>）| 是 |  chatinput | Class：lite-chatinput内只能存在一个textarea标签
-发送按钮（&lt;button>） | 是 | send | Class：lite-chatinput内只能存在一个发送按钮
-分界线（&lt;hr>） | 是 | boundary | 充当输入框和对话框之间的分界线
-工具栏按钮（&lt;button>） | 否 | tool-button（必选）、float-right/float-left（二选一） | 用于充当表情按钮等工具栏控件，类名float-left 和 类名float-right 决定其对齐方式（左对齐/右对齐）。
+| 组件（HTML标签）            | 是否必备 | 类名                                                  | 备注                                                                                              |
+| --------------------------- | -------- | ----------------------------------------------------- | ------------------------------------------------------------------------------------------------- |
+| 文字输入框（&lt;textarea>） | 是       | chatinput                                             | Class：lite-chatinput内只能存在一个textarea标签                                                   |
+| 发送按钮（&lt;button>）     | 是       | send                                                  | Class：lite-chatinput内只能存在一个发送按钮                                                       |
+| 分界线（&lt;hr>）           | 是       | boundary                                              | 充当输入框和对话框之间的分界线                                                                    |
+| 工具栏按钮（&lt;button>）   | 否       | tool-button（必选）、float-right/float-left（二选一） | 用于充当表情按钮等工具栏控件，类名float-left 和 类名float-right 决定其对齐方式（左对齐/右对齐）。 |
 
 Example:
 
