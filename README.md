@@ -130,7 +130,7 @@ body {
 
 ```html
 <!-- 抽离的聊天信息组件 -->
-<script src="lite-chatbox.min.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/MorFansLab/LiteWebChat_Frame/lite-chatbox.min.js"></script>
 <script>
   const htmls = [
       {
