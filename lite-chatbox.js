@@ -40,7 +40,7 @@ function renderMessageHtml(data) {
         <img class="headIcon ${data.diamond ? '' : 'radius'}" src="${data.headIcon}" ondragstart="return false;" oncontextmenu="return false;"/>
         <span class="name">
             ${renderTitleHtml(data.htitle, TitleType[data.htitleType] || '')}
-            <span style="vertical-align: middle;">${escapeHtml(data.name) || ''}</span>
+            <span>${escapeHtml(data.name) || '&nbsp;'}</span>
         </span>
         <span class="content">${data.messageType === 'raw' ? data.html : escapeHtml(data.html)}</span>
     </div>`;
