@@ -77,7 +77,7 @@
     const htmls = [
         {
             messageType: 'tipsDanger',
-            html: '从我做过的类聊天需求来看，聊天消息要么是纯文本，要么是富文本。所以我抽离出来的消息渲染组件默认了消息是富文本。如果想发送HTML请自行魔改。'
+            html: '从我做过的类聊天需求来看，聊天消息要么是纯文本，要么是富文本。text 类型是纯文本, raw 类型是富文本。'
         },
         {
             messageType: 'text',
@@ -112,6 +112,8 @@
             headIcon: './img/B.jpg',
             name: 'SuperPaxxs',
             position: 'right',
+            htitleType: 'admin',
+            htitle: 'admin',
             html: '好吧，气泡css来自 <a href="http://i.intas.cn/" target="_blank">Haswikr的Blog</a> 的机器人气泡，我给白色的加了点边框 😝 ',
         },
         {
@@ -145,18 +147,23 @@
             headIcon: './img/B.jpg',
             name: 'SuperPaxxs',
             position: 'right',
-            html: `<del>诶哟少年你找对人了</del><br><br>
-            如果只是使用，那非常简单。<br>
-            <h2>使用指北</h2>
-            1.引用css： litechat.css<br><br>
-            &lt;link type=&quot;text/css&quot; href=&quot;//lab.morfans.cn/LiteWebChat_Frame/litewebchat.css&quot; rel=&quot;stylesheet&quot; /&gt;
-            <br>或<br>
-            &lt;link type=&quot;text/css&quot; href=&quot;//lab.morfans.cn/LiteWebChat_Frame/litewebchat.min.css&quot; rel=&quot;stylesheet&quot; /&gt;<br><br>
-            2.创建一个 DIV ，用来容纳聊天对话，目的是不让 css 干扰页面其他内容：<br><br>
-            &lt;div class=&quot;lite-chatbox&quot;&gt; <br>
-            ...<br>
-            &lt;/div&gt;<br><br>
-            话说你就不会看下源码吗...<b>楼下就是特性演示</b>`
+            html: `<del>诶哟少年你找对人了</del>
+
+
+如果只是使用，那非常简单。<h2>使用指北</h2>
+1.引用css： litechat.css
+
+&lt;link type=&quot;text/css&quot; href=&quot;//lab.morfans.cn/LiteWebChat_Frame/litewebchat.css&quot; rel=&quot;stylesheet&quot; /&gt;
+或
+&lt;link type=&quot;text/css&quot; href=&quot;//lab.morfans.cn/LiteWebChat_Frame/litewebchat.min.css&quot; rel=&quot;stylesheet&quot; /&gt;
+
+2.创建一个 DIV ，用来容纳聊天对话，目的是不让 css 干扰页面其他内容：
+
+&lt;div class=&quot;lite-chatbox&quot;&gt;
+...
+&lt;/div&gt;
+
+话说你就不会看下源码吗...<b>楼下是特性演示</b>`
         },
         {
             messageType: 'tipsNormal',
@@ -278,16 +285,17 @@
         {
             messageType: 'text',
             headIcon: './img/B.jpg',
-            name: '&nbsp;',
+            name: '',
             position: 'right',
-            html: `当无昵时候需要 &nbsp; 填充`
+            html: `当无昵时候, name 字段留空即可`
         },
         {
             messageType: 'text',
             headIcon: './img/B.jpg',
             name: 'SuperPaxxs',
             position: 'right',
-            html: '换行用 &lt;br /&gt; ，HTML 你懂的..'
+            html: `换行用可以用 <br>
+也可以直接换..`
         },
         {
             messageType: 'text',
