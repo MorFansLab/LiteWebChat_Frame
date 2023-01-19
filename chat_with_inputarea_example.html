@@ -2,263 +2,239 @@
 <html lang="en">
 
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="height=device-height, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>LiteChat_Frame（轻聊天气泡框架）</title>
-  <link rel="stylesheet" type="text/css" href="./litewebchat.min.css" />
-  <link rel="stylesheet" href="litewebchatinput.min.css">
-  <style>
-    /* 全局 */
-
-    html,
-    body {
-      height: 100%;
-      margin: 0;
-      padding: 0;
-      overflow: hidden;
-    }
-
-    .lite-chatmaster {
-      height: 100%;
-      width: 100%;
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="height=device-height, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>LiteChat_Frame（轻聊天气泡框架）</title>
+    <link rel="stylesheet" type="text/css" href="./litewebchat.min.css" />
+    <link rel="stylesheet" href="litewebchatinput.min.css">
+    <style>
+        /* 全局 */
+        
+        html,
+        body {
+            height: 100%;
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+        }
+        
+        .lite-chatmaster {
+            height: 100%;
+            width: 100%;
+        }
+    </style>
 </head>
 
 <!-- 主容器 -->
 <div class="lite-chatmaster">
-  <div class="lite-chatbox">
-    <!-- cleft 左 -->
-    <div class="cleft cmsg">
-      <img class="headIcon radius" ondragstart="return false;" oncontextmenu="return false;" src="./img/A.jpg" />
-      <span class="name"><span>chenjunyu19</span></span>
-      <span class="content">这是什么什么鬼？</span>
+    <div class="lite-chatbox">
+        <!-- cleft 左 -->
+        <div class="cleft cmsg">
+            <img class="headIcon radius" ondragstart="return false;" oncontextmenu="return false;" src="./img/A.jpg" />
+            <span class="name">chenjunyu19</span>
+            <span class="content">这是什么什么鬼？</span>
+        </div>
+
+        <!-- cright 右 -->
+        <div class="cright cmsg">
+            <img class="headIcon radius" ondragstart="return false;" oncontextmenu="return false;" src="./img/B.jpg" />
+            <span class="name">SuperPaxxs</span>
+            <span class="content">LiteChat_Frame（轻聊天气泡框架），一个贼简洁 <del>(简单)</del> 、美观、易用的 HTML 聊天界面框架</span>
+        </div>
+
+        <div class="cright cmsg">
+            <img class="headIcon radius" ondragstart="return false;" oncontextmenu="return false;" src="./img/B.jpg" />
+            <span class="name">SuperPaxxs</span>
+            <span class="content">它简洁而不简单，能使你开发聊天界面更快速</span>
+        </div>
+
+        <div class="cleft cmsg">
+            <img class="headIcon radius" ondragstart="return false;" oncontextmenu="return false;" src="./img/A.jpg" />
+            <span class="name">chenjunyu19</span>
+            <span class="content">直接说，气泡是谁的？</span>
+        </div>
+
+        <div class="cright cmsg">
+            <img class="headIcon radius" ondragstart="return false;" oncontextmenu="return false;" src="./img/B.jpg" />
+            <span class="name">SuperPaxxs</span>
+            <span class="content">好吧，气泡css来自 <a href="http://i.intas.cn/" target="_blank">Haswikr的Blog</a> 的机器人气泡，我给白色的加了点边框 😝 </span>
+        </div>
+
+        <div class="cleft cmsg">
+            <img class="headIcon radius" ondragstart="return false;" oncontextmenu="return false;" src="./img/H.jpg" />
+            <span class="name"><span class="htitle admin">admin</span>Haswikr</span>
+            <span class="content">当初调色煞费苦心</span>
+        </div>
+
+        <div class="cleft cmsg">
+            <img class="headIcon radius" ondragstart="return false;" oncontextmenu="return false;" src="./img/O.jpg" />
+            <span class="name"><span class="htitle owner">owner</span>Sonui</span>
+            <span class="content">这设计真棒</span>
+        </div>
+
+        <div class="cleft cmsg">
+            <img class="headIcon radius" ondragstart="return false;" oncontextmenu="return false;" src="./img/A.jpg" />
+            <span class="name"><span class="htitle">menber123456789789</span>chenjunyu19</span>
+            <span class="content">那咋用啊？</span>
+        </div>
+
+        <div class="cright cmsg">
+            <img class="headIcon radius" ondragstart="return false;" oncontextmenu="return false;" src="./img/B.jpg" />
+            <span class="name">SuperPaxxs</span>
+            <span class="content">
+            <del>诶哟少年你找对人了</del><br><br>
+            如果只是使用，那非常简单。<br>
+            <h2>使用指北</h2>
+            1.引用css： litechat.css<br><br>
+            &lt;link type=&quot;text/css&quot; href=&quot;//lab.morfans.cn/LiteWebChat_Frame/litewebchat.css&quot; rel=&quot;stylesheet&quot; /&gt;
+            <br>或<br>
+            &lt;link type=&quot;text/css&quot; href=&quot;//lab.morfans.cn/LiteWebChat_Frame/litewebchat.min.css&quot; rel=&quot;stylesheet&quot; /&gt;<br><br>
+            2.创建一个 DIV ，用来容纳聊天对话，目的是不让 css 干扰页面其他内容：<br><br>
+            &lt;div class=&quot;lite-chatbox&quot;&gt; <br>
+            ...<br>
+            &lt;/div&gt;<br><br>           
+            话说你就不会看下源码吗...<b>楼下就是特性演示</b>
+        </span>
+        </div>
+
+        <div class="tips">
+            <span>Chenjunyu19 退出了聊天室并撩了你一把</span>
+        </div>
+        <div class="cleft cmsg">
+            <img class="headIcon radius" ondragstart="return false;" oncontextmenu="return false;" src="./img/A.jpg" />
+            <span class="name">空消息测试1</span>
+            <span class="content"></span>
+        </div>
+
+        <div class="cright cmsg">
+            <img class="headIcon radius" ondragstart="return false;" oncontextmenu="return false;" src="./img/B.jpg" />
+            <span class="name">空消息测试2</span>
+            <span class="content">&nbsp;</span>
+        </div>
+        <div class="cleft cmsg">
+            <img class="headIcon radius" ondragstart="return false;" oncontextmenu="return false;" src="./img/A.jpg" />
+            <span class="name">chenjunyu19</span>
+            <span class="content">注意，上面两条空消息的消息内容代码不一样</span>
+        </div>
+
+        <div class="cright cmsg">
+            <img class="headIcon" ondragstart="return false;" oncontextmenu="return false;" src="./img/B.jpg" />
+            <span class="name">SuperPaxxs</span>
+            <span class="content">头像换成方形请去掉 radius </span>
+        </div>
+
+        <div class="cleft cmsg">
+            <img class="headIcon" ondragstart="return false;" oncontextmenu="return false;" src="./img/A.jpg" />
+            <span class="name">chenjunyu19</span>
+            <span class="content">我是左边的方形头像</span>
+        </div>
+
+        <div class="cright cmsg">
+            <img class="headIcon radius" ondragstart="return false;" oncontextmenu="return false;" src="./img/B.jpg" />
+            <span class="name">图片消息</span>
+            <span class="content"><img src="./img/img2.png"></span>
+        </div>
+
+        <div class="cleft cmsg">
+            <img class="headIcon radius" ondragstart="return false;" oncontextmenu="return false;" src="./img/A.jpg" />
+            <span class="name">图片消息2</span>
+            <span class="content"><img src="./img/img.png"><br>
+         图片带文字是可以的 <del>（废话）</del></span>
+        </div>
+
+        <div class="cright cmsg">
+            <img class="headIcon radius" ondragstart="return false;" oncontextmenu="return false;" src="./img/B.jpg" />
+            <span class="name">右边长消息</span>
+            <span class="content">我的消息真的超级长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长欸</span>
+        </div>
+
+        <div class="cleft cmsg">
+            <img class="headIcon radius" ondragstart="return false;" oncontextmenu="return false;" src="./img/A.jpg" />
+            <span class="name">左边长消息</span>
+            <span class="content">这么巧鸭，我的也超超超超超超超超超超超超超超超超超超超超超超超超超超超超超超超超超超超超超超超超超超超超超超超超超超超超超超超超超超超超超超超超超超超超超超超超超超超超超超超超超超超超超超超超超超超超超超超超超超超超超超超超超超超超超超超超超超超超超超超超超超超超超超超超超超超超超超超超超超超超超超超超超超超超超级长的欸</span>
+        </div>
+
+        <div class="tips">
+            <span class="tips-danger">系统消息：左/右边长消息被管理员批判一番……</span>
+        </div>
+
+        <div class="tips">
+            <span>系统消息：normal</span>
+        </div>
+
+        <div class="tips">
+            <span class="tips-primary">系统消息：primary</span>
+        </div>
+
+        <div class="tips">
+            <span class="tips-success">系统消息：success</span>
+        </div>
+
+        <div class="tips">
+            <span class="tips-info">系统消息：info</span>
+        </div>
+
+        <div class="tips">
+            <span class="tips-warning">系统消息：warning</span>
+        </div>
+
+        <div class="tips">
+            <span class="tips-danger">系统消息：danger</span>
+        </div>
+
+
+
+        <div class="cright cmsg">
+            <img class="headIcon radius" ondragstart="return false;" oncontextmenu="return false;" src="./img/B.jpg" />
+            <span class="name">带有超链接的消息测试</span>
+            <span class="content">当然是可以有超链接的。例子在这里：<br><a href="http://morfans.cn" target="_blank">你敢点我吗</a> ← 戳这里</span>
+        </div>
+
+        <div class="cleft cmsg">
+            <img class="headIcon radius" ondragstart="return false;" oncontextmenu="return false;" src="./img/A.jpg" />
+            <span class="name">全符号测试</span>
+            <span class="content">。，；？：！‘’“”@ˆ.,;?:!&#x27;&quot;〝〞﹫ˇ</span>
+        </div>
+
+        <div class="cleft cmsg">
+            <img class="headIcon radius" ondragstart="return false;" oncontextmenu="return false;" src="./img/A.jpg" />
+            <span class="name">全emoji测试</span>
+            <span class="content">😀😝🐂🍺</span>
+        </div>
+
+        <div class="cright cmsg">
+            <img class="headIcon radius" ondragstart="return false;" oncontextmenu="return false;" src="./img/B.jpg" />
+            <span class="name">&nbsp;</span>
+            <span class="content">当无昵时候需要 &amp;nbsp; 填充</span>
+        </div>
+
+        <div class="cright cmsg">
+            <img class="headIcon radius" ondragstart="return false;" oncontextmenu="return false;" src="./img/B.jpg" />
+            <span class="name">SuperPaxxs</span>
+            <span class="content">换行用 &lt;br&gt; ，HTML 你懂的..</span>
+        </div>
+
+        <div class="cleft cmsg">
+            <img class="headIcon radius" ondragstart="return false;" oncontextmenu="return false;" src="./img/A.jpg" />
+            <span class="name">chenjunyu19</span>
+            <span class="content">以上就是全部的特性，以后有空再更</span>
+        </div>
     </div>
 
-    <!-- cright 右 -->
-    <div class="cright cmsg">
-      <img class="headIcon radius" ondragstart="return false;" oncontextmenu="return false;" src="./img/B.jpg" />
-      <span class="name"><span>SuperPaxxs</span></span>
-      <span class="content">LiteChat_Frame（轻聊天气泡框架），一个贼简洁 <del>(简单)</del> 、美观、易用的 HTML 聊天界面框架</span>
+    <div class="lite-chattools">
+        <div style="display:none" id="emojiMart" class="lite-chatbox-tool"></div>
+        <div style="display:none" id="toolMusk"></div>
     </div>
 
-    <div class="cright cmsg">
-      <img class="headIcon radius" ondragstart="return false;" oncontextmenu="return false;" src="./img/B.jpg" />
-      <span class="name"><span>SuperPaxxs</span></span>
-      <span class="content">它简洁而不简单，能使你开发聊天界面更快速</span>
+    <div class="lite-chatinput">
+        <hr class="boundary">
+        <button title="表情" type="button" class="tool-button float-left" id="emojiBtn"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0m0 22C6.486 22 2 17.514 2 12S6.486 2 12 2s10 4.486 10 10-4.486 10-10 10"></path><path d="M8 7a2 2 0 1 0-.001 3.999A2 2 0 0 0 8 7M16 7a2 2 0 1 0-.001 3.999A2 2 0 0 0 16 7M15.232 15c-.693 1.195-1.87 2-3.349 2-1.477 0-2.655-.805-3.347-2H15m3-2H6a6 6 0 1 0 12 0"></path></svg></button>
+        <button title="全屏编辑" type="button" class="tool-button float-right" id="editFullScreen"><svg svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 1024"><path d="M17.066667 2.844444C11.377778 2.844444 8.533333 5.688889 5.688889 8.533333 2.844444 11.377778 0 14.222222 0 19.911111v364.088889c0 2.844444 0 5.688889 2.844444 5.688889h5.688889l122.311111-122.311111 164.977778 164.977778c2.844444 2.844444 8.533333 5.688889 11.377778 5.688888 5.688889 0 8.533333-2.844444 11.377778-5.688888l110.933333-110.933334c2.844444-2.844444 5.688889-8.533333 5.688889-11.377778 0-5.688889-2.844444-8.533333-5.688889-11.377777l-159.288889-170.666667L389.688889 8.533333c2.844444-2.844444 2.844444-2.844444 0-5.688889 0-2.844444-2.844444-2.844444-2.844445-2.844444L17.066667 2.844444zM17.066667 1024c-5.688889 0-8.533333-2.844444-11.377778-5.688889-2.844444-2.844444-5.688889-8.533333-5.688889-11.377778V640c0-2.844444 0-5.688889 2.844444-5.688889h5.688889l122.311111 122.311111 164.977778-164.977778c2.844444-2.844444 8.533333-5.688889 11.377778-5.688888 5.688889 0 8.533333 2.844444 11.377778 5.688888l110.933333 110.933334c2.844444 2.844444 5.688889 8.533333 5.688889 11.377778s-2.844444 8.533333-5.688889 11.377777l-164.977778 164.977778 119.466667 119.466667c2.844444 2.844444 2.844444 2.844444 0 5.688889 0 2.844444-2.844444 2.844444-5.688889 2.844444L17.066667 1024zM1006.933333 2.844444c5.688889 0 8.533333 2.844444 11.377778 5.688889 2.844444 2.844444 5.688889 5.688889 5.688889 11.377778v364.088889c0 2.844444 0 5.688889-2.844444 5.688889h-5.688889l-122.311111-122.311111-164.977778 164.977778c-2.844444 2.844444-8.533333 5.688889-11.377778 5.688888-5.688889 0-8.533333-2.844444-11.377778-5.688888l-110.933333-110.933334c-2.844444-2.844444-5.688889-8.533333-5.688889-11.377778 0-5.688889 2.844444-8.533333 5.688889-11.377777l164.977778-164.977778L640 14.222222c-2.844444-2.844444-2.844444-2.844444 0-5.688889-5.688889-8.533333-2.844444-8.533333-2.844444-8.533333l369.777777 2.844444z m0 1021.155556c5.688889 0 8.533333-2.844444 11.377778-5.688889 2.844444-2.844444 5.688889-8.533333 5.688889-11.377778V640c0-2.844444 0-5.688889-2.844444-5.688889h-5.688889l-122.311111 122.311111-164.977778-164.977778c-2.844444-2.844444-8.533333-5.688889-11.377778-5.688888-5.688889 0-8.533333 2.844444-11.377778 5.688888l-110.933333 110.933334c-2.844444 2.844444-5.688889 8.533333-5.688889 11.377778s2.844444 8.533333 5.688889 11.377777l164.977778 164.977778-119.466667 119.466667c-2.844444 2.844444-2.844444 2.844444 0 5.688889 0 2.844444 2.844444 2.844444 5.688889 2.844444l361.244444 5.688889z"></path></svg></button>
+        <button style="display:none" title="退出" type="button" class="tool-button float-right" id="exitFullScreen"><svg svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 1024"><path d="M422.648199 431.157895c5.67313 0 8.509695-2.836565 11.346261-5.67313 2.836565-2.836565 5.67313-8.509695 5.67313-11.346261V51.058172c0-2.836565 0-5.67313-2.836565-5.67313h-5.67313L306.34903 170.193906 141.828255 5.67313C138.99169 2.836565 133.31856 0 130.481994 0c-5.67313 0-11.34626 2.836565-14.182825 5.67313L5.67313 116.299169c-2.836565 2.836565-5.67313 8.509695-5.67313 11.34626 0 5.67313 2.836565 11.34626 5.67313 14.182826L170.193906 303.512465l-119.135734 119.135734c-2.836565 2.836565-2.836565 2.836565 0 5.673131 0 2.836565 2.836565 2.836565 5.67313 2.836565h365.916897z m0 156.01108c5.67313 0 8.509695 2.836565 11.346261 5.67313 2.836565 2.836565 5.67313 8.509695 5.67313 11.346261v365.916897c0 2.836565 0 5.67313-2.836565 5.67313h-5.67313L306.34903 850.969529 141.828255 1015.490305c-2.836565 2.836565-8.509695 5.67313-11.346261 5.67313-5.67313 0-8.509695-2.836565-11.34626-5.67313L8.509695 904.864266c-5.67313-2.836565-8.509695-8.509695-8.509695-11.34626s2.836565-8.509695 5.67313-11.346261L170.193906 717.65097l-119.135734-119.135735c-2.836565-2.836565-2.836565-2.836565 0-5.67313 0-2.836565 2.836565-2.836565 5.67313-2.836565l365.916897-2.836565z m175.867036-156.01108c-5.67313 0-8.509695-2.836565-11.34626-5.67313-2.836565-2.836565-5.67313-8.509695-5.67313-11.346261V51.058172c0-2.836565 0-5.67313 2.836565-5.67313h5.67313L714.814404 170.193906 879.33518 5.67313c2.836565-2.836565 8.509695-5.67313 11.34626-5.67313 5.67313 0 8.509695 2.836565 11.346261 5.67313l110.626039 110.626039c5.67313 2.836565 8.509695 8.509695 8.509695 11.34626 0 5.67313-2.836565 8.509695-5.67313 11.346261L850.969529 303.512465l119.135734 119.135734c2.836565 2.836565 2.836565 2.836565 0 5.673131 0 2.836565-2.836565 2.836565-5.67313 2.836565H598.515235z m0 156.01108c-5.67313 0-8.509695 2.836565-11.34626 5.67313-2.836565 2.836565-5.67313 8.509695-5.67313 11.346261v365.916897c0 2.836565 0 5.67313 2.836565 5.67313h5.67313l121.972299-121.972299 164.520776 164.520776c2.836565 2.836565 8.509695 5.67313 11.34626 5.67313 5.67313 0 8.509695-2.836565 11.346261-5.67313l110.626039-110.626039c2.836565-2.836565 5.67313-8.509695 5.67313-11.34626s-2.836565-8.509695-5.67313-11.346261L850.969529 717.65097l119.135734-119.135735c2.836565-2.836565 2.836565-2.836565 0-5.67313 0-2.836565-2.836565-2.836565-5.67313-2.836565l-365.916898-2.836565z"></path></svg></button>
+        <textarea class="chatinput" aria-label="List description"></textarea>
+        <button class="send">发送</button>
     </div>
-
-    <div class="cleft cmsg">
-      <img class="headIcon radius" ondragstart="return false;" oncontextmenu="return false;" src="./img/A.jpg" />
-      <span class="name"><span>chenjunyu19</span></span>
-      <span class="content">直接说，气泡是谁的？</span>
-    </div>
-
-    <div class="cright cmsg">
-      <img class="headIcon radius" ondragstart="return false;" oncontextmenu="return false;" src="./img/B.jpg" />
-      <span class="name"><span class="htitle admin">admin</span><span>SuperPaxxs</span></span>
-      <span class="content">好吧，气泡css来自 <a href="http://i.intas.cn/" target="_blank">Haswikr的Blog</a>
-        的机器人气泡，我给白色的加了点边框 😝 </span>
-    </div>
-
-    <div class="cleft cmsg">
-      <img class="headIcon radius" ondragstart="return false;" oncontextmenu="return false;" src="./img/H.jpg" />
-      <span class="name"><span class="htitle admin">admin</span><span>Haswikr</span></span>
-      <span class="content">当初调色煞费苦心</span>
-    </div>
-
-    <div class="cleft cmsg">
-      <img class="headIcon radius" ondragstart="return false;" oncontextmenu="return false;" src="./img/O.jpg" />
-      <span class="name"><span class="htitle owner">owner</span><span>Sonui</span></span>
-      <span class="content">这设计真棒</span>
-    </div>
-
-    <div class="cleft cmsg">
-      <img class="headIcon radius" ondragstart="return false;" oncontextmenu="return false;" src="./img/A.jpg" />
-      <span class="name"><span class="htitle">menber</span><span>chenjunyu19</span></span>
-      <span class="content">那咋用啊？</span>
-    </div>
-
-    <div class="cright cmsg">
-      <img class="headIcon radius" ondragstart="return false;" oncontextmenu="return false;" src="./img/B.jpg" />
-      <span class="name"><span>SuperPaxxs</span></span>
-      <span class="content"><del>诶哟少年你找对人了</del>
-
-如果只是使用，那非常简单。<h2>使用指北</h2>1.引用css： litechat.css
-
-&lt;link type=&quot;text/css&quot; href=&quot;//lab.morfans.cn/LiteWebChat_Frame/litewebchat.css&quot;
-rel=&quot;stylesheet&quot; /&gt;
-或
-&lt;link type=&quot;text/css&quot;
-href=&quot;//lab.morfans.cn/LiteWebChat_Frame/litewebchat.min.css&quot; rel=&quot;stylesheet&quot; /&gt;
-
-2.创建一个 DIV ，用来容纳聊天对话，目的是不让 css 干扰页面其他内容：
-
-&lt;div class=&quot;lite-chatbox&quot;&gt;
-...
-&lt;/div&gt;
-
-话说你就不会看下源码吗...<b>楼下是特性演示</b>
-      </span>
-    </div>
-
-    <div class="tips">
-      <span>Chenjunyu19 退出了聊天室并撩了你一把</span>
-    </div>
-    <div class="cleft cmsg">
-      <img class="headIcon radius" ondragstart="return false;" oncontextmenu="return false;" src="./img/A.jpg" />
-      <span class="name">空消息测试1</span>
-      <span class="content"></span>
-    </div>
-
-    <div class="cright cmsg">
-      <img class="headIcon radius" ondragstart="return false;" oncontextmenu="return false;" src="./img/B.jpg" />
-      <span class="name">空消息测试2</span>
-      <span class="content">&nbsp;</span>
-    </div>
-    <div class="cleft cmsg">
-      <img class="headIcon radius" ondragstart="return false;" oncontextmenu="return false;" src="./img/A.jpg" />
-      <span class="name"><span>chenjunyu19</span></span>
-      <span class="content">注意，上面两条空消息的消息内容代码不一样</span>
-    </div>
-
-    <div class="cright cmsg">
-      <img class="headIcon" ondragstart="return false;" oncontextmenu="return false;" src="./img/B.jpg" />
-      <span class="name"><span>SuperPaxxs</span></span>
-      <span class="content">头像换成方形请去掉 radius </span>
-    </div>
-
-    <div class="cleft cmsg">
-      <img class="headIcon" ondragstart="return false;" oncontextmenu="return false;" src="./img/A.jpg" />
-      <span class="name"><span>chenjunyu19</span></span>
-      <span class="content">我是左边的方形头像</span>
-    </div>
-
-    <div class="cright cmsg">
-      <img class="headIcon radius" ondragstart="return false;" oncontextmenu="return false;" src="./img/B.jpg" />
-      <span class="name">图片消息</span>
-      <span class="content"><img src="./img/img2.png"></span>
-    </div>
-
-    <div class="cleft cmsg">
-      <img class="headIcon radius" ondragstart="return false;" oncontextmenu="return false;" src="./img/A.jpg" />
-      <span class="name">图片消息2</span>
-      <span class="content"><img src="./img/img.png"><br>图片带文字是可以的 <del>（废话）</del></span>
-    </div>
-
-    <div class="cright cmsg">
-      <img class="headIcon radius" ondragstart="return false;" oncontextmenu="return false;" src="./img/B.jpg" />
-      <span class="name">右边长消息</span>
-      <span
-        class="content">我的消息真的超级长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长欸</span>
-    </div>
-
-    <div class="cleft cmsg">
-      <img class="headIcon radius" ondragstart="return false;" oncontextmenu="return false;" src="./img/A.jpg" />
-      <span class="name">左边长消息</span>
-      <span
-        class="content">这么巧鸭，我的也超超超超超超超超超超超超超超超超超超超超超超超超超超超超超超超超超超超超超超超超超超超超超超超超超超超超超超超超超超超超超超超超超超超超超超超超超超超超超超超超超超超超超超超超超超超超超超超超超超超超超超超超超超超超超超超超超超超超超超超超超超超超超超超超超超超超超超超超超超超超超超超超超超超超超级长的欸</span>
-    </div>
-
-    <div class="tips">
-      <span class="tips-danger">系统消息：左/右边长消息被管理员批判一番……</span>
-    </div>
-
-    <div class="tips">
-      <span>系统消息：normal</span>
-    </div>
-
-    <div class="tips">
-      <span class="tips-primary">系统消息：primary</span>
-    </div>
-
-    <div class="tips">
-      <span class="tips-success">系统消息：success</span>
-    </div>
-
-    <div class="tips">
-      <span class="tips-info">系统消息：info</span>
-    </div>
-
-    <div class="tips">
-      <span class="tips-warning">系统消息：warning</span>
-    </div>
-
-    <div class="tips">
-      <span class="tips-danger">系统消息：danger</span>
-    </div>
-
-
-
-    <div class="cright cmsg">
-      <img class="headIcon radius" ondragstart="return false;" oncontextmenu="return false;" src="./img/B.jpg" />
-      <span class="name">带有超链接的消息测试</span>
-      <span class="content">当然是可以有超链接的。例子在这里：<br><a href="https://www.morfans.cn" target="_blank">你敢点我吗</a> ←戳这里</span>
-    </div>
-
-    <div class="cleft cmsg">
-      <img class="headIcon radius" ondragstart="return false;" oncontextmenu="return false;" src="./img/A.jpg" />
-      <span class="name">全符号测试</span>
-      <span class="content">。，；？：！‘’“”@ˆ.,;?:!&#x27;&quot;〝〞﹫ˇ</span>
-    </div>
-
-    <div class="cleft cmsg">
-      <img class="headIcon radius" ondragstart="return false;" oncontextmenu="return false;" src="./img/A.jpg" />
-      <span class="name">全emoji测试</span>
-      <span class="content">😀😝🐂🍺</span>
-    </div>
-
-    <div class="cright cmsg">
-      <img class="headIcon radius" ondragstart="return false;" oncontextmenu="return false;" src="./img/B.jpg" />
-      <span class="name">&nbsp;</span>
-      <span class="content">当无昵时候需要 &amp;nbsp; 填充</span>
-    </div>
-
-    <div class="cright cmsg">
-      <img class="headIcon radius" ondragstart="return false;" oncontextmenu="return false;" src="./img/B.jpg" />
-      <span class="name"><span>SuperPaxxs</span></span>
-      <span class="content">换行用 &lt;br&gt; ，HTML 你懂的.. 当然直接换行也行</span>
-    </div>
-
-    <div class="cleft cmsg">
-      <img class="headIcon radius" ondragstart="return false;" oncontextmenu="return false;" src="./img/A.jpg" />
-      <span class="name"><span>chenjunyu19</span></span>
-      <span class="content">以上就是全部的特性，以后有空再更</span>
-    </div>
-  </div>
-
-  <div class="lite-chattools">
-    <div style="display:none" id="emojiMart" class="lite-chatbox-tool"></div>
-    <div style="display:none" id="toolMusk"></div>
-  </div>
-
-  <div class="lite-chatinput">
-    <hr class="boundary">
-    <button title="表情" type="button" class="tool-button float-left" id="emojiBtn"><svg
-        xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-        <path
-          d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0m0 22C6.486 22 2 17.514 2 12S6.486 2 12 2s10 4.486 10 10-4.486 10-10 10">
-        </path>
-        <path
-          d="M8 7a2 2 0 1 0-.001 3.999A2 2 0 0 0 8 7M16 7a2 2 0 1 0-.001 3.999A2 2 0 0 0 16 7M15.232 15c-.693 1.195-1.87 2-3.349 2-1.477 0-2.655-.805-3.347-2H15m3-2H6a6 6 0 1 0 12 0">
-        </path>
-      </svg></button>
-    <button title="全屏编辑" type="button" class="tool-button float-right" id="editFullScreen"><svg svg
-        xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 1024">
-        <path
-          d="M17.066667 2.844444C11.377778 2.844444 8.533333 5.688889 5.688889 8.533333 2.844444 11.377778 0 14.222222 0 19.911111v364.088889c0 2.844444 0 5.688889 2.844444 5.688889h5.688889l122.311111-122.311111 164.977778 164.977778c2.844444 2.844444 8.533333 5.688889 11.377778 5.688888 5.688889 0 8.533333-2.844444 11.377778-5.688888l110.933333-110.933334c2.844444-2.844444 5.688889-8.533333 5.688889-11.377778 0-5.688889-2.844444-8.533333-5.688889-11.377777l-159.288889-170.666667L389.688889 8.533333c2.844444-2.844444 2.844444-2.844444 0-5.688889 0-2.844444-2.844444-2.844444-2.844445-2.844444L17.066667 2.844444zM17.066667 1024c-5.688889 0-8.533333-2.844444-11.377778-5.688889-2.844444-2.844444-5.688889-8.533333-5.688889-11.377778V640c0-2.844444 0-5.688889 2.844444-5.688889h5.688889l122.311111 122.311111 164.977778-164.977778c2.844444-2.844444 8.533333-5.688889 11.377778-5.688888 5.688889 0 8.533333 2.844444 11.377778 5.688888l110.933333 110.933334c2.844444 2.844444 5.688889 8.533333 5.688889 11.377778s-2.844444 8.533333-5.688889 11.377777l-164.977778 164.977778 119.466667 119.466667c2.844444 2.844444 2.844444 2.844444 0 5.688889 0 2.844444-2.844444 2.844444-5.688889 2.844444L17.066667 1024zM1006.933333 2.844444c5.688889 0 8.533333 2.844444 11.377778 5.688889 2.844444 2.844444 5.688889 5.688889 5.688889 11.377778v364.088889c0 2.844444 0 5.688889-2.844444 5.688889h-5.688889l-122.311111-122.311111-164.977778 164.977778c-2.844444 2.844444-8.533333 5.688889-11.377778 5.688888-5.688889 0-8.533333-2.844444-11.377778-5.688888l-110.933333-110.933334c-2.844444-2.844444-5.688889-8.533333-5.688889-11.377778 0-5.688889 2.844444-8.533333 5.688889-11.377777l164.977778-164.977778L640 14.222222c-2.844444-2.844444-2.844444-2.844444 0-5.688889-5.688889-8.533333-2.844444-8.533333-2.844444-8.533333l369.777777 2.844444z m0 1021.155556c5.688889 0 8.533333-2.844444 11.377778-5.688889 2.844444-2.844444 5.688889-8.533333 5.688889-11.377778V640c0-2.844444 0-5.688889-2.844444-5.688889h-5.688889l-122.311111 122.311111-164.977778-164.977778c-2.844444-2.844444-8.533333-5.688889-11.377778-5.688888-5.688889 0-8.533333 2.844444-11.377778 5.688888l-110.933333 110.933334c-2.844444 2.844444-5.688889 8.533333-5.688889 11.377778s2.844444 8.533333 5.688889 11.377777l164.977778 164.977778-119.466667 119.466667c-2.844444 2.844444-2.844444 2.844444 0 5.688889 0 2.844444 2.844444 2.844444 5.688889 2.844444l361.244444 5.688889z">
-        </path>
-      </svg></button>
-    <button style="display:none" title="退出" type="button" class="tool-button float-right" id="exitFullScreen"><svg svg
-        xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 1024">
-        <path
-          d="M422.648199 431.157895c5.67313 0 8.509695-2.836565 11.346261-5.67313 2.836565-2.836565 5.67313-8.509695 5.67313-11.346261V51.058172c0-2.836565 0-5.67313-2.836565-5.67313h-5.67313L306.34903 170.193906 141.828255 5.67313C138.99169 2.836565 133.31856 0 130.481994 0c-5.67313 0-11.34626 2.836565-14.182825 5.67313L5.67313 116.299169c-2.836565 2.836565-5.67313 8.509695-5.67313 11.34626 0 5.67313 2.836565 11.34626 5.67313 14.182826L170.193906 303.512465l-119.135734 119.135734c-2.836565 2.836565-2.836565 2.836565 0 5.673131 0 2.836565 2.836565 2.836565 5.67313 2.836565h365.916897z m0 156.01108c5.67313 0 8.509695 2.836565 11.346261 5.67313 2.836565 2.836565 5.67313 8.509695 5.67313 11.346261v365.916897c0 2.836565 0 5.67313-2.836565 5.67313h-5.67313L306.34903 850.969529 141.828255 1015.490305c-2.836565 2.836565-8.509695 5.67313-11.346261 5.67313-5.67313 0-8.509695-2.836565-11.34626-5.67313L8.509695 904.864266c-5.67313-2.836565-8.509695-8.509695-8.509695-11.34626s2.836565-8.509695 5.67313-11.346261L170.193906 717.65097l-119.135734-119.135735c-2.836565-2.836565-2.836565-2.836565 0-5.67313 0-2.836565 2.836565-2.836565 5.67313-2.836565l365.916897-2.836565z m175.867036-156.01108c-5.67313 0-8.509695-2.836565-11.34626-5.67313-2.836565-2.836565-5.67313-8.509695-5.67313-11.346261V51.058172c0-2.836565 0-5.67313 2.836565-5.67313h5.67313L714.814404 170.193906 879.33518 5.67313c2.836565-2.836565 8.509695-5.67313 11.34626-5.67313 5.67313 0 8.509695 2.836565 11.346261 5.67313l110.626039 110.626039c5.67313 2.836565 8.509695 8.509695 8.509695 11.34626 0 5.67313-2.836565 8.509695-5.67313 11.346261L850.969529 303.512465l119.135734 119.135734c2.836565 2.836565 2.836565 2.836565 0 5.673131 0 2.836565-2.836565 2.836565-5.67313 2.836565H598.515235z m0 156.01108c-5.67313 0-8.509695 2.836565-11.34626 5.67313-2.836565 2.836565-5.67313 8.509695-5.67313 11.346261v365.916897c0 2.836565 0 5.67313 2.836565 5.67313h5.67313l121.972299-121.972299 164.520776 164.520776c2.836565 2.836565 8.509695 5.67313 11.34626 5.67313 5.67313 0 8.509695-2.836565 11.346261-5.67313l110.626039-110.626039c2.836565-2.836565 5.67313-8.509695 5.67313-11.34626s-2.836565-8.509695-5.67313-11.346261L850.969529 717.65097l119.135734-119.135735c2.836565-2.836565 2.836565-2.836565 0-5.67313 0-2.836565-2.836565-2.836565-5.67313-2.836565l-365.916898-2.836565z">
-        </path>
-      </svg></button>
-    <textarea class="chatinput" aria-label="List description"></textarea>
-    <button class="send">发送</button>
-  </div>
 </div>
 
 <!-- Emoji Mart -->
@@ -266,10 +242,10 @@ href=&quot;//lab.morfans.cn/LiteWebChat_Frame/litewebchat.min.css&quot; rel=&quo
 <script src="litewebchatinput.min.js"></script>
 
 <script>
-  // 没有任何用处，只是清空输入框
-  document.querySelector(".send").onclick = function () {
-    document.querySelector(".chatinput").value = "";
-  }
+    // 没有任何用处，只是清空输入框
+    document.querySelector(".send").onclick = function() {
+        document.querySelector(".chatinput").value = "";
+    }
 </script>
 
 </body>
