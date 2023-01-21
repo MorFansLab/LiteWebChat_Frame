@@ -4,7 +4,10 @@
     height: calc(100% - 150px);
 }
 
-.lite-chatbox :last-child {
+
+/* .lite-chatbox内的最后一条消息的margin-bottom设置为20px，离下面远一点 */
+
+.lite-chatbox>div:last-child {
     margin-bottom: 20px;
 }
 
