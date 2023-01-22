@@ -14,6 +14,15 @@
 
 /* 输入框 */
 
+.lite-chatinput>.tool-button,
+.lite-chatinput>textarea,
+.lite-chatinput>.send {
+    display: -webkit-flex;
+    display: flex;
+    -webkit-flex-direction: column;
+    flex-direction: column;
+}
+
 .lite-chatinput {
     width: 100%;
     height: 150px;
@@ -37,11 +46,12 @@
 
 /* 输入框 */
 
-.lite-chatinput .chatinput {
+.lite-chatinput>.chatinput {
     position: relative;
-    margin: 0px 3px 0px 3px;
+    /* margin: 0px 3px 0px 3px; */
     width: calc(100% - 6px);
-    height: calc(100% - 80px);
+    /* width: 100%; */
+    height: calc(100% - 75px);
     border: none;
     outline: none;
     resize: none;
@@ -52,12 +62,10 @@
 /* 发送按钮 */
 
 .lite-chatinput .send {
-    position: absolute;
-    bottom: 12px;
-    right: 40px;
+    float: right;
     padding: 4px 20px 4px 20px;
+    margin-right: 40px;
     color: white;
-    z-index: 1;
     background: -webkit-linear-gradient(70deg, #3FD1E1 0%, #44D7CD 100%);
     background: linear-gradient(20deg, #3f8fe1cc 0%, #44d7c9 100%);
     -webkit-box-shadow: 5px 5px 15px 0 rgba(102, 102, 102, 0.1);

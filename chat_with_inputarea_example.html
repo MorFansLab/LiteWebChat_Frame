@@ -7,7 +7,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>LiteChat_Frame（轻聊天气泡框架）</title>
     <link rel="stylesheet" type="text/css" href="./litewebchat.min.css" />
-    <link rel="stylesheet" href="litewebchatinput.min.css">
+    <link rel="stylesheet" href="litewebchatinput.css">
     <style>
         /* 全局 */
         
@@ -237,6 +237,28 @@
         <button class="send">发送</button>
     </div>
 </div>
+
+<style>
+    #file-input-list {
+        /* position: relative; */
+        /* display: block; */
+        width: 100%;
+        height: 20px;
+        flex-wrap: nowrap;
+        flex-direction: row;
+        overflow-x: scroll;
+        overflow-y: hidden;
+    }
+    
+    .file-in-file-input {
+        display: flex;
+        /* justify-content: flex-start; */
+        border: 1px solid #000;
+        min-width: 100px;
+        height: 20px;
+        margin-bottom: 3px;
+    }
+</style>
 
 <!-- Emoji Mart -->
 <script src="https://cdn.jsdelivr.net/npm/emoji-mart@latest/dist/browser.js"></script>
