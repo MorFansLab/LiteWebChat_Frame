@@ -1,3 +1,7 @@
+// !参考资料来源：
+// !https://blog.csdn.net/weixin_40629244/article/details/104642683
+// !https://github.com/jrainlau/chat-input-box
+
 var upperChild = document.querySelector('.lite-chatbox');
 var oLine = document.querySelector('.lite-chatinput hr');
 var downChild = document.querySelector('.lite-chatinput');
@@ -15,10 +19,11 @@ var chatInput = document.querySelector('.lite-chatinput>.chatinput');
 var pickerOptions = {
     "locale": "zh",
     onEmojiSelect: function(e) {
-        // console.log(e.native);            
+        console.log(e.native);
         emojiMart.style.display = "none";
         toolMusk.style.display = "none";
-        insertAtCursor(document.querySelector('.lite-chatinput>.chatinput'), e.native)
+        insertAtCursor(chatInput, e.native);
+        // insertEmoji(e.native);
     }
 }
 var picker = new EmojiMart.Picker(pickerOptions);
@@ -26,25 +31,46 @@ emojiMart.appendChild(picker);
 
 // 负责在光标处插入文字的函数
 function insertAtCursor(myField, myValue) {
-    //IE support
-    if (document.selection) {
-        // console.log('ie');
-        myField.focus();
-        sel = document.selection.createRange();
-        sel.text = myValue;
-    }
-    //MOZILLA and others
-    else if (myField.selectionStart || myField.selectionStart == '0') {
-        // console.log('modern');
-        var startPos = myField.selectionStart;
-        var endPos = myField.selectionEnd;
-        myField.value = myField.value.substring(0, startPos) +
-            myValue +
-            myField.value.substring(endPos, myField.value.length);
-        myField.selectionStart = startPos + myValue.length;
-        myField.selectionEnd = startPos + myValue.length;
-    } else {
-        myField.value += myValue;
+    var editor = myField;
+    var html = myValue;
+
+    editor.focus();
+
+    if (window.getSelection) {
+
+        var selection = window.getSelection();
+
+        if (selection.getRangeAt && selection.rangeCount) {
+
+            var range = selection.getRangeAt(0);
+            range.deleteContents();
+            var element = document.createElement('div');
+            element.innerHTML = html;
+
+            var node;
+            var lastNode;
+            var fragment = document.createDocumentFragment();
+
+            while ((node = element.firstChild)) {
+                lastNode = fragment.appendChild(node);
+            };
+
+            range.insertNode(fragment);
+            if (lastNode) {
+                range = range.cloneRange();
+                range.setStartAfter(lastNode);
+                range.collapse(true);
+                selection.removeAllRanges();
+                selection.addRange(range);
+            };
+        }
+
+    } else if (document.selection && document.selection.type != 'Control') {
+
+        editor.focus();
+        var range = document.selection.createRange();
+        range.pasteHTML(html);
+        editor.focus();
     }
 }
 
@@ -122,10 +148,11 @@ exitFullScreen.onclick = function() {
 
 // 隐藏musk和表情输入框
 toolMusk.onclick = function() {
-    emojiMart.style.display = "none";
-    toolMusk.style.display = "none";
+    // emojiMart.style.display = "none";
+    // toolMusk.style.display = "none";
 }
 
+// 上传文件
 function inputFile(settings) {
     if (settings.enable) {
         sendFile = settings.sendFileFunc;
@@ -171,45 +198,41 @@ function inputFile(settings) {
 }
 
 const onPaste = (e) => {
-        // 如果剪贴板没有数据则直接返回
-        if (!(e.clipboardData && e.clipboardData.items)) {
-            return
-        }
-        // 用Promise封装便于将来使用
-        return new Promise((resolve, reject) => {
-            // 复制的内容在剪贴板里位置不确定，所以通过遍历来保证数据准确
-            for (let i = 0, len = e.clipboardData.items.length; i < len; i++) {
-                const item = e.clipboardData.items[i]
-                    // 文本格式内容处理
-                if (item.kind === 'string') {
-                    item.getAsString((str) => {
-                            resolve(str)
-                        })
-                        // 图片格式内容处理
-                } else if (item.kind === 'file') {
-                    const pasteFile = item.getAsFile()
-                        // 处理pasteFile
-                    const imgEvent = {
-                        target: {
-                            files: [pasteFile]
-                        }
-                    }
-                    chooseImg(imgEvent, (url) => {
-                        resolve(url)
-                    })
-                } else {
-                    reject(new Error('Not allow to paste this type!'))
-                }
-            }
-        })
+    // 如果剪贴板没有数据则直接返回
+    if (!(e.clipboardData && e.clipboardData.items)) {
+        return
     }
-    // async function pasteImage(e) {
-    //     console.log(e.clipboardData.items);
-    //     result = await onPaste(e);
-    //     console.log(result);
-    // }
+    // 用Promise封装便于将来使用
+    return new Promise((resolve, reject) => {
+        // 复制的内容在剪贴板里位置不确定，所以通过遍历来保证数据准确
+        for (let i = 0, len = e.clipboardData.items.length; i < len; i++) {
+            const item = e.clipboardData.items[i]
+                // 文本格式内容处理
+            if (item.kind === 'string') {
+                item.getAsString((str) => {
+                        resolve(str)
+                    })
+                    // 图片格式内容处理
+            } else if (item.kind === 'file') {
+                const pasteFile = item.getAsFile()
+                    // 处理pasteFile
+                const imgEvent = {
+                    target: {
+                        files: [pasteFile]
+                    }
+                }
+                chooseImg(imgEvent, (url) => {
+                    resolve(url)
+                })
+            } else {
+                reject(new Error('Not allow to paste this type!'))
+            }
+        }
+    })
+}
+
+// 监听粘贴事件，用于处理粘贴的内容为图片时的情况
 chatInput.addEventListener('paste', async(e) => {
-    // pasteImage(e);
     // 读取剪贴板的内容
     // 阻止直接粘贴
     e.preventDefault();
