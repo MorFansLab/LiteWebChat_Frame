@@ -1,6 +1,8 @@
 // !参考资料来源：
 // !https://blog.csdn.net/weixin_40629244/article/details/104642683
 // !https://github.com/jrainlau/chat-input-box
+// !致谢：感谢@jrainlau提供的思路和代码，我在他的富文本编辑器基础上进行了修改，使其能够在聊天输入框中使用
+// ————YubaC 2023.1.23
 
 var upperChild = document.querySelector('.lite-chatbox');
 var oLine = document.querySelector('.lite-chatinput hr');
@@ -8,6 +10,7 @@ var downChild = document.querySelector('.lite-chatinput');
 
 var emojiBtn = document.getElementById("emojiBtn");
 var fileBtn = document.getElementById("fileBtn");
+var imageBtn = document.getElementById("imageBtn");
 var editFullScreen = document.getElementById("editFullScreen");
 var exitFullScreen = document.getElementById("exitFullScreen");
 var emojiMart = document.getElementById("emojiMart");
@@ -19,7 +22,7 @@ var chatInput = document.querySelector('.lite-chatinput>.chatinput');
 var pickerOptions = {
     "locale": "zh",
     onEmojiSelect: function(e) {
-        console.log(e.native);
+        // console.log(e.native);
         emojiMart.style.display = "none";
         toolMusk.style.display = "none";
         insertAtCursor(chatInput, e.native);
@@ -37,11 +40,8 @@ function insertAtCursor(myField, myValue) {
     editor.focus();
 
     if (window.getSelection) {
-
         var selection = window.getSelection();
-
         if (selection.getRangeAt && selection.rangeCount) {
-
             var range = selection.getRangeAt(0);
             range.deleteContents();
             var element = document.createElement('div');
@@ -66,7 +66,6 @@ function insertAtCursor(myField, myValue) {
         }
 
     } else if (document.selection && document.selection.type != 'Control') {
-
         editor.focus();
         var range = document.selection.createRange();
         range.pasteHTML(html);
@@ -148,27 +147,85 @@ exitFullScreen.onclick = function() {
 
 // 隐藏musk和表情输入框
 toolMusk.onclick = function() {
-    // emojiMart.style.display = "none";
-    // toolMusk.style.display = "none";
+    emojiMart.style.display = "none";
+    toolMusk.style.display = "none";
 }
 
-// 上传文件
+// 从本地上传文件
+function loadImage() {
+    var imageInput = document.createElement('input');
+    imageInput.type = 'file';
+    imageInput.accept = 'image/*';
+    imageInput.multiple = true;
+    imageInput.style.display = 'none';
+    imageInput.onchange = function() {
+            // 获取文件
+            for (var i = 0; i < this.files.length; i++) {
+                var file = this.files[i];
+                sendFile(file);
+            }
+        }
+        // 触发点击事件
+    imageInput.click();
+}
+
+function addImage(file) {
+    new Promise((resolve, reject) => {
+        // console.log(file);
+        // 获取file的src
+        var reader = new FileReader();
+        reader.onload = function(e) {
+            var src = e.target.result;
+            var img = new Image();
+            img.src = src;
+
+            // 为了防止图片在输入框内显示过大不好编辑
+            img.style.width = "100px";
+            // 将img从HEMLElement转化为字符串
+            // 例如，转化结束后为'<img src="">'
+            var imgStr = img.outerHTML;
+            // 将img字符串插入到输入框中
+            insertAtCursor(chatInput, imgStr);
+        }
+        reader.readAsDataURL(file);
+    })
+}
+
+// 上传图片、文件
 function inputFile(settings) {
     if (settings.enable) {
+        imageBtn.onclick = function() {
+            var imageInput = document.createElement('input');
+            imageInput.type = 'file';
+            imageInput.accept = 'image/*';
+            imageInput.multiple = true;
+            imageInput.style.display = 'none';
+            imageInput.onchange = function() {
+                    // 获取文件
+                    for (var i = 0; i < this.files.length; i++) {
+                        addImage(this.files[i]);
+                    }
+                }
+                // 触发点击事件
+            imageInput.click();
+        }
+
         sendFile = settings.sendFileFunc;
-        // 上传文件
+        // 上传文件按钮
         fileBtn.onclick = function() {
             // 创建一个隐藏的上传文件的input，再借助点击这个input来上传文件
             var fileInput = document.createElement('input');
             fileInput.type = 'file';
+            fileInput.multiple = true;
             fileInput.style.display = 'none';
             fileInput.onchange = function() {
-                // 获取文件
-                var file = this.files[0];
-                sendFile(file);
-            }
-
-            // 触发点击事件
+                    // 获取文件
+                    for (var i = 0; i < this.files.length; i++) {
+                        var file = this.files[i];
+                        sendFile(file);
+                    }
+                }
+                // 触发点击事件
             fileInput.click();
         }
 
@@ -176,10 +233,19 @@ function inputFile(settings) {
             // 当downChild有文件被拖入时，也调用上传文件的函数
             downChild.ondrop = function(e) {
                 e.preventDefault();
+                // 阻止火狐浏览器默认打开文件的行为
+                e.stopPropagation();
                 downChild.style.border = "none";
                 // 获取被拖拽的文件并上传
-                var file = e.dataTransfer.files[0];
-                sendFile(file);
+                for (var i = 0; i < e.dataTransfer.files.length; i++) {
+                    var file = e.dataTransfer.files[i];
+                    // 如果是图片，直接插入到输入框中
+                    if (file.type.indexOf("image") == 0) {
+                        addImage(file);
+                    } else {
+                        sendFile(file);
+                    }
+                }
             }
 
             // 当downChild有文件被拖入时，改变downChild的边框颜色
@@ -221,7 +287,7 @@ const onPaste = (e) => {
                         files: [pasteFile]
                     }
                 }
-                chooseImg(imgEvent, (url) => {
+                chooseImg(imgEvent.target.files[0], (url) => {
                     resolve(url)
                 })
             } else {
@@ -246,6 +312,10 @@ chatInput.addEventListener('paste', async(e) => {
             const range = sel.getRangeAt(0);
             const img = new Image();
             img.src = result;
+
+            // 为了防止图片在输入框内显示过大不好编辑
+            img.style.width = "100px";
+
             range.insertNode(img);
             range.collapse(false);
             sel.removeAllRanges();
@@ -267,43 +337,15 @@ function toPreviewer(dataUrl, cb) {
 }
 
 /**
- * 图片压缩函数
- *
- * @param {*} img 图片对象
- * @param {*} fileType  图片类型
- * @param {*} maxWidth 图片最大宽度
- * @returns base64字符串
- */
-function compress(img, fileType, maxWidth) {
-    let canvas = document.createElement('canvas')
-    let ctx = canvas.getContext('2d')
-
-    const proportion = img.width / img.height
-    const width = maxWidth
-    const height = maxWidth / proportion
-
-    canvas.width = width
-    canvas.height = height
-
-    ctx.fillStyle = '#fff'
-    ctx.fillRect(0, 0, canvas.width, canvas.height)
-    ctx.drawImage(img, 0, 0, width, height)
-
-    const base64data = canvas.toDataURL(fileType, 0.75)
-    canvas = ctx = null
-
-    return base64data
-}
-
-/**
  * 选择图片函数
  *
  * @param {*} e input.onchange事件对象
  * @param {*} cb 回调函数
  * @param {number} [maxsize=200 * 1024] 图片最大体积
  */
-function chooseImg(e, cb, maxsize = 200 * 1024) {
-    const file = e.target.files[0]
+function chooseImg(file, cb, maxsize = 200 * 1024) {
+    // const file = e.target.files[0]
+    // console.log(file);
 
     if (!file || !/\/(?:jpeg|jpg|png)/i.test(file.type)) {
         return
@@ -312,21 +354,11 @@ function chooseImg(e, cb, maxsize = 200 * 1024) {
     const reader = new FileReader()
     reader.onload = function() {
         const result = this.result
-        let img = new Image()
-
-        if (result.length <= maxsize) {
-            toPreviewer(result, cb)
-            return
-        }
-
-        img.onload = function() {
-            const compressedDataUrl = compress(img, file.type, maxsize / 1024)
-            toPreviewer(compressedDataUrl, cb)
-            img = null
-        }
-
-        img.src = result
+        toPreviewer(result, cb)
+        return
     }
-
     reader.readAsDataURL(file)
 }
+
+
+chatInput.focus();
