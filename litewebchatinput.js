@@ -1,24 +1,31 @@
 // !参考资料来源：
 // !https://blog.csdn.net/weixin_40629244/article/details/104642683
 // !https://github.com/jrainlau/chat-input-box
+// !https://www.zhihu.com/question/20893119/answer/19452676
 // !致谢：感谢@jrainlau提供的思路和代码，我在他的富文本编辑器基础上进行了修改，使其能够在聊天输入框中使用
 // ————YubaC 2023.1.23
 
+// --------------------------------
+// 上半部分的聊天区域
 var upperChild = document.querySelector('.lite-chatbox');
+// 分界线
 var oLine = document.querySelector('.lite-chatinput hr');
+// 下半部分的输入框区域
 var downChild = document.querySelector('.lite-chatinput');
 
-var emojiBtn = document.getElementById("emojiBtn");
-var fileBtn = document.getElementById("fileBtn");
-var imageBtn = document.getElementById("imageBtn");
-var editFullScreen = document.getElementById("editFullScreen");
-var exitFullScreen = document.getElementById("exitFullScreen");
-var emojiMart = document.getElementById("emojiMart");
-var toolMusk = document.getElementById("toolMusk");
-var sendBtn = document.getElementById("sendBtn");
-var chatInput = document.querySelector('.lite-chatinput>.chatinput');
+// 以下为输入框区域的按钮
+var emojiBtn = document.getElementById("emojiBtn"); // 表情按钮
+var imageBtn = document.getElementById("imageBtn"); // 图片按钮
+var fileBtn = document.getElementById("fileBtn"); // 文件按钮
+var editFullScreen = document.getElementById("editFullScreen"); // 全屏按钮
+var exitFullScreen = document.getElementById("exitFullScreen"); // 退出全屏按钮
+var emojiMart = document.getElementById("emojiMart"); // 表情面板
+var toolMusk = document.getElementById("toolMusk"); // 表情面板遮罩
+var sendBtn = document.getElementById("sendBtn"); // 发送按钮
+var chatInput = document.querySelector('.lite-chatinput>.chatinput'); // 输入框
+// --------------------------------
 
-// Emoji Mart 设置及唤起
+// Emoji Mart（表情面板）设置及唤起
 var pickerOptions = {
     "locale": "zh",
     onEmojiSelect: function(e) {
@@ -36,7 +43,6 @@ emojiMart.appendChild(picker);
 function insertAtCursor(myField, myValue) {
     var editor = myField;
     var html = myValue;
-
     editor.focus();
 
     if (window.getSelection) {
@@ -151,24 +157,7 @@ toolMusk.onclick = function() {
     toolMusk.style.display = "none";
 }
 
-// 从本地上传文件
-function loadImage() {
-    var imageInput = document.createElement('input');
-    imageInput.type = 'file';
-    imageInput.accept = 'image/*';
-    imageInput.multiple = true;
-    imageInput.style.display = 'none';
-    imageInput.onchange = function() {
-            // 获取文件
-            for (var i = 0; i < this.files.length; i++) {
-                var file = this.files[i];
-                sendFile(file);
-            }
-        }
-        // 触发点击事件
-    imageInput.click();
-}
-
+// 将图片插入到输入框中
 function addImage(file) {
     new Promise((resolve, reject) => {
         // console.log(file);
@@ -179,8 +168,9 @@ function addImage(file) {
             var img = new Image();
             img.src = src;
 
-            // 为了防止图片在输入框内显示过大不好编辑
-            img.style.width = "100px";
+            // *这里的方法已经转移到了css里，暂时弃用
+            // // 为了防止图片在输入框内显示过大不好编辑
+            // img.style.width = "100px";
             // 将img从HEMLElement转化为字符串
             // 例如，转化结束后为'<img src="">'
             var imgStr = img.outerHTML;
@@ -194,22 +184,23 @@ function addImage(file) {
 // 上传图片、文件
 function inputFile(settings) {
     if (settings.enable) {
+        // -----------------上传图片的按钮-----------------
         imageBtn.onclick = function() {
-            var imageInput = document.createElement('input');
-            imageInput.type = 'file';
-            imageInput.accept = 'image/*';
-            imageInput.multiple = true;
-            imageInput.style.display = 'none';
-            imageInput.onchange = function() {
-                    // 获取文件
-                    for (var i = 0; i < this.files.length; i++) {
-                        addImage(this.files[i]);
+                var imageInput = document.createElement('input');
+                imageInput.type = 'file';
+                imageInput.accept = 'image/*';
+                imageInput.multiple = true;
+                imageInput.style.display = 'none';
+                imageInput.onchange = function() {
+                        // 获取文件
+                        for (var i = 0; i < this.files.length; i++) {
+                            addImage(this.files[i]);
+                        }
                     }
-                }
-                // 触发点击事件
-            imageInput.click();
-        }
-
+                    // 触发点击事件
+                imageInput.click();
+            }
+            // -----------------上传文件的按钮-----------------
         sendFile = settings.sendFileFunc;
         // 上传文件按钮
         fileBtn.onclick = function() {
@@ -229,7 +220,8 @@ function inputFile(settings) {
             fileInput.click();
         }
 
-        if (settings.enableDropFile) {
+        // -----------------拖拽上传-----------------
+        if (settings.enableDrop) {
             // 当downChild有文件被拖入时，也调用上传文件的函数
             downChild.ondrop = function(e) {
                 e.preventDefault();
@@ -263,102 +255,22 @@ function inputFile(settings) {
     }
 }
 
-const onPaste = (e) => {
-    // 如果剪贴板没有数据则直接返回
-    if (!(e.clipboardData && e.clipboardData.items)) {
-        return
-    }
-    // 用Promise封装便于将来使用
-    return new Promise((resolve, reject) => {
-        // 复制的内容在剪贴板里位置不确定，所以通过遍历来保证数据准确
-        for (let i = 0, len = e.clipboardData.items.length; i < len; i++) {
-            const item = e.clipboardData.items[i]
-                // 文本格式内容处理
-            if (item.kind === 'string') {
-                item.getAsString((str) => {
-                        resolve(str)
-                    })
-                    // 图片格式内容处理
-            } else if (item.kind === 'file') {
-                const pasteFile = item.getAsFile()
-                    // 处理pasteFile
-                const imgEvent = {
-                    target: {
-                        files: [pasteFile]
-                    }
-                }
-                chooseImg(imgEvent.target.files[0], (url) => {
-                    resolve(url)
-                })
-            } else {
-                reject(new Error('Not allow to paste this type!'))
-            }
-        }
-    })
-}
-
-// 监听粘贴事件，用于处理粘贴的内容为图片时的情况
-chatInput.addEventListener('paste', async(e) => {
-    // 读取剪贴板的内容
-    // 阻止直接粘贴
-    e.preventDefault();
-    const result = await onPaste(e);
-    const imgRegx = /^data:image\/png;base64,/;
-    // 如果是图片格式（base64），则通过构造range的办法把<img>标签插入正确的位置
-    // 如果是文本格式，则通过document.execCommand('insertText')方法把文本插入
-    if (imgRegx.test(result)) {
-        const sel = window.getSelection();
-        if (sel && sel.rangeCount === 1 && sel.isCollapsed) {
-            const range = sel.getRangeAt(0);
-            const img = new Image();
-            img.src = result;
-
-            // 为了防止图片在输入框内显示过大不好编辑
-            img.style.width = "100px";
-
-            range.insertNode(img);
-            range.collapse(false);
-            sel.removeAllRanges();
-            sel.addRange(range);
-        }
-    } else {
-        document.execCommand('insertText', false, result);
-    }
+// TODO:可能富文本输入框的粘贴部分需要对Chrome浏览器做部分额外适配，以优化体验
+// 无格式粘贴
+chatInput.addEventListener('paste', function(e) {
+    onPaste(e);
 })
 
-/**
- * 预览函数
- *
- * @param {*} dataUrl base64字符串
- * @param {*} cb 回调函数
- */
-function toPreviewer(dataUrl, cb) {
-    cb && cb(dataUrl)
-}
-
-/**
- * 选择图片函数
- *
- * @param {*} e input.onchange事件对象
- * @param {*} cb 回调函数
- * @param {number} [maxsize=200 * 1024] 图片最大体积
- */
-function chooseImg(file, cb, maxsize = 200 * 1024) {
-    // const file = e.target.files[0]
-    // console.log(file);
-
-    if (!file || !/\/(?:jpeg|jpg|png)/i.test(file.type)) {
-        return
+//格式化粘贴文本方法
+function onPaste(event) {
+    // 如果粘贴的是文本，就清除格式后粘贴
+    if (event.clipboardData && event.clipboardData.getData) {
+        var text = event.clipboardData.getData('text/plain');
+        if (text) {
+            event.preventDefault();
+            document.execCommand('insertText', false, text);
+        }
     }
-
-    const reader = new FileReader()
-    reader.onload = function() {
-        const result = this.result
-        toPreviewer(result, cb)
-        return
-    }
-    reader.readAsDataURL(file)
 }
-
 
 chatInput.focus();

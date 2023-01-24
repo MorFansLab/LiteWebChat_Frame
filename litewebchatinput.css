@@ -15,15 +15,13 @@
 /* 输入框 */
 
 
-/* 
-.lite-chatinput>.tool-button,
-.lite-chatinput>.chatinput,
-.lite-chatinput>.send {
-    display: -webkit-flex;
-    display: flex;
-    -webkit-flex-direction: column;
-    flex-direction: column;
-} */
+/* 缩小输入框内的图片，方便编辑 */
+
+.lite-chatinput img {
+    max-width: 150px;
+    max-height: 150px;
+    object-fit: contain;
+}
 
 .lite-chatinput {
     width: 100%;
