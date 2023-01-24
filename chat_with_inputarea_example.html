@@ -82,7 +82,7 @@
         <div class="cright cmsg">
             <img class="headIcon radius" ondragstart="return false;" oncontextmenu="return false;" src="./img/B.jpg" />
             <span class="name"><span>SuperPaxxs</span></span>
-      <span class="content"><del>诶哟少年你找对人了</del>
+            <span class="content"><del>诶哟少年你找对人了</del>
 
 如果只是使用，那非常简单。<h2>使用指北</h2>1.引用css： litechat.css
 
@@ -262,12 +262,8 @@ href=&quot;//lab.morfans.cn/LiteWebChat_Frame/litewebchat.min.css&quot; rel=&quo
             enableDrop: true,
             // 负责发送文件的函数（回调函数），file为传回的文件信息，与使用<input>标签获得的相同
             sendFileFunc: function(file) {
-                // alert(file.name);
-                console.log(file);
-
-                // chooseImg(file, (url) => {
-                //     console.log(url)
-                // });
+                alert(file.name);
+                // console.log(file);
             }
         });
     });
