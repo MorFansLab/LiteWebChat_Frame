@@ -183,6 +183,20 @@ function addImage(file) {
 
 // 上传图片、文件
 function inputFile(settings) {
+    console.log(settings);
+    // -----------------设置最大图片大小及数量-----------------
+    if (settings.maxImageSize != undefined) {
+        maxImageSize = settings.maxImageSize;
+    } else {
+        maxImageSize = -1;
+    }
+
+    if (settings.maxImageNumber != undefined) {
+        maxImageNumber = settings.maxImageNumber;
+    } else {
+        maxImageNumber = -1;
+    }
+
     if (settings.enable) {
         // -----------------上传图片的按钮-----------------
         imageBtn.onclick = function() {
@@ -192,9 +206,19 @@ function inputFile(settings) {
                 imageInput.multiple = true;
                 imageInput.style.display = 'none';
                 imageInput.onchange = function() {
+                        // 获取输入框内图片数量
                         // 获取文件
+                        var imgNum = chatInput.getElementsByTagName('img').length;
                         for (var i = 0; i < this.files.length; i++) {
-                            addImage(this.files[i]);
+                            if (maxImageNumber == -1 || imgNum < maxImageNumber) {
+                                // 如果大小超过限制，改用文件上传
+                                if ((maxImageSize == -1 || this.files[i].size <= maxImageSize)) {
+                                    imgNum++;
+                                    addImage(this.files[i]);
+                                } else {
+                                    sendFile(this.files[i]);
+                                }
+                            }
                         }
                     }
                     // 触发点击事件
@@ -229,11 +253,20 @@ function inputFile(settings) {
                 e.stopPropagation();
                 downChild.style.border = "none";
                 // 获取被拖拽的文件并上传
+                var imgNum = chatInput.getElementsByTagName('img').length;
                 for (var i = 0; i < e.dataTransfer.files.length; i++) {
                     var file = e.dataTransfer.files[i];
                     // 如果是图片，直接插入到输入框中
                     if (file.type.indexOf("image") == 0) {
-                        addImage(file);
+                        if (maxImageNumber == -1 || imgNum < maxImageNumber) {
+                            // 如果大小超过限制，改用文件上传
+                            if ((maxImageSize == -1 || file.size <= maxImageSize)) {
+                                addImage(file);
+                                imgNum++;
+                            } else {
+                                sendFile(file);
+                            }
+                        }
                     } else {
                         sendFile(file);
                     }
@@ -252,6 +285,14 @@ function inputFile(settings) {
                 downChild.style.border = "none";
             }
         }
+    } else {
+        // 如果不允许上传，那么删除事件
+        imageBtn.onclick = null;
+        fileBtn.onclick = null;
+        // 删除拖拽事件
+        downChild.ondrop = null;
+        downChild.ondragover = null;
+        downChild.ondragleave = null;
     }
 }
 
@@ -273,4 +314,6 @@ function onPaste(event) {
     }
 }
 
-chatInput.focus();
+window.addEventListener('DOMContentLoaded', function() {
+    chatInput.focus();
+});

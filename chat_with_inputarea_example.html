@@ -6,8 +6,8 @@
     <meta name="viewport" content="height=device-height, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>LiteChat_Frame（轻聊天气泡框架）</title>
-    <link rel="stylesheet" type="text/css" href="./litewebchat.css" />
-    <link rel="stylesheet" href="litewebchatinput.css">
+    <link rel="stylesheet" type="text/css" href="./litewebchat.min.css" />
+    <link rel="stylesheet" href="litewebchatinput.min.css">
     <style>
         /* 全局 */
         
@@ -245,7 +245,7 @@ href=&quot;//lab.morfans.cn/LiteWebChat_Frame/litewebchat.min.css&quot; rel=&quo
 
 <!-- Emoji Mart -->
 <script src="https://cdn.jsdelivr.net/npm/emoji-mart@latest/dist/browser.js"></script>
-<script src="litewebchatinput.js"></script>
+<script src="litewebchatinput.min.js"></script>
 
 <script>
     document.addEventListener("DOMContentLoaded", function() {
@@ -260,6 +260,8 @@ href=&quot;//lab.morfans.cn/LiteWebChat_Frame/litewebchat.min.css&quot; rel=&quo
             enable: true,
             // 允许在输入框处拖拽发送文件
             enableDrop: true,
+            maxImageSize: 1024 * 1024 * 10, // 图片最大10MB，超过了就要用文件发送，默认为-1（无限制），可以不设置
+            maxImageNumber: 20, // 输入框内最多同时存在20张图片，默认为-1（无限制），可以不设置
             // 负责发送文件的函数（回调函数），file为传回的文件信息，与使用<input>标签获得的相同
             sendFileFunc: function(file) {
                 alert(file.name);

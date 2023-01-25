@@ -274,9 +274,12 @@ Example:
         enable: true,
         // 允许在输入框处拖拽发送文件
         enableDrop: true,
+        maxImageSize: 1024 * 1024 * 10, // 图片最大10MB，超过了就要用文件发送，默认为-1（无限制），可以不设置
+        maxImageNumber: 20, // 输入框内最多同时存在20张图片，默认为-1（无限制），可以不设置
         // 负责发送文件的函数（回调函数），file为传回的文件信息，与使用<input>标签获得的相同
         sendFileFunc: function(file) {
             alert(file.name);
+            // console.log(file);
         }
     });
 </script>
