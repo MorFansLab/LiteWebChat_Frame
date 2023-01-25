@@ -1,22 +1,39 @@
+// !参考资料来源：
+// !https://blog.csdn.net/weixin_40629244/article/details/104642683
+// !https://github.com/jrainlau/chat-input-box
+// !https://www.zhihu.com/question/20893119/answer/19452676
+// !致谢：感谢@jrainlau提供的思路和代码，我在他的富文本编辑器基础上进行了修改，使其能够在聊天输入框中使用
+// ————YubaC 2023.1.23
+
+// --------------------------------
+// 上半部分的聊天区域
 var upperChild = document.querySelector('.lite-chatbox');
+// 分界线
 var oLine = document.querySelector('.lite-chatinput hr');
+// 下半部分的输入框区域
 var downChild = document.querySelector('.lite-chatinput');
 
-var emojiBtn = document.getElementById("emojiBtn");
-var fileBtn = document.getElementById("fileBtn");
-var editFullScreen = document.getElementById("editFullScreen");
-var exitFullScreen = document.getElementById("exitFullScreen");
-var emojiMart = document.getElementById("emojiMart");
-var toolMusk = document.getElementById("toolMusk");
+// 以下为输入框区域的按钮
+var emojiBtn = document.getElementById("emojiBtn"); // 表情按钮
+var imageBtn = document.getElementById("imageBtn"); // 图片按钮
+var fileBtn = document.getElementById("fileBtn"); // 文件按钮
+var editFullScreen = document.getElementById("editFullScreen"); // 全屏按钮
+var exitFullScreen = document.getElementById("exitFullScreen"); // 退出全屏按钮
+var emojiMart = document.getElementById("emojiMart"); // 表情面板
+var toolMusk = document.getElementById("toolMusk"); // 表情面板遮罩
+var sendBtn = document.getElementById("sendBtn"); // 发送按钮
+var chatInput = document.querySelector('.lite-chatinput>.chatinput'); // 输入框
+// --------------------------------
 
-// Emoji Mart 设置及唤起
+// Emoji Mart（表情面板）设置及唤起
 var pickerOptions = {
     "locale": "zh",
     onEmojiSelect: function(e) {
-        // console.log(e.native);            
+        // console.log(e.native);
         emojiMart.style.display = "none";
         toolMusk.style.display = "none";
-        insertAtCursor(document.querySelector('.lite-chatinput textarea'), e.native)
+        insertAtCursor(chatInput, e.native);
+        // insertEmoji(e.native);
     }
 }
 var picker = new EmojiMart.Picker(pickerOptions);
@@ -24,25 +41,41 @@ emojiMart.appendChild(picker);
 
 // 负责在光标处插入文字的函数
 function insertAtCursor(myField, myValue) {
-    //IE support
-    if (document.selection) {
-        // console.log('ie');
-        myField.focus();
-        sel = document.selection.createRange();
-        sel.text = myValue;
-    }
-    //MOZILLA and others
-    else if (myField.selectionStart || myField.selectionStart == '0') {
-        // console.log('modern');
-        var startPos = myField.selectionStart;
-        var endPos = myField.selectionEnd;
-        myField.value = myField.value.substring(0, startPos) +
-            myValue +
-            myField.value.substring(endPos, myField.value.length);
-        myField.selectionStart = startPos + myValue.length;
-        myField.selectionEnd = startPos + myValue.length;
-    } else {
-        myField.value += myValue;
+    var editor = myField;
+    var html = myValue;
+    editor.focus();
+
+    if (window.getSelection) {
+        var selection = window.getSelection();
+        if (selection.getRangeAt && selection.rangeCount) {
+            var range = selection.getRangeAt(0);
+            range.deleteContents();
+            var element = document.createElement('div');
+            element.innerHTML = html;
+
+            var node;
+            var lastNode;
+            var fragment = document.createDocumentFragment();
+
+            while ((node = element.firstChild)) {
+                lastNode = fragment.appendChild(node);
+            };
+
+            range.insertNode(fragment);
+            if (lastNode) {
+                range = range.cloneRange();
+                range.setStartAfter(lastNode);
+                range.collapse(true);
+                selection.removeAllRanges();
+                selection.addRange(range);
+            };
+        }
+
+    } else if (document.selection && document.selection.type != 'Control') {
+        editor.focus();
+        var range = document.selection.createRange();
+        range.pasteHTML(html);
+        editor.focus();
     }
 }
 
@@ -124,33 +157,120 @@ toolMusk.onclick = function() {
     toolMusk.style.display = "none";
 }
 
+// 将图片插入到输入框中
+function addImage(file) {
+    new Promise((resolve, reject) => {
+        // console.log(file);
+        // 获取file的src
+        var reader = new FileReader();
+        reader.onload = function(e) {
+            var src = e.target.result;
+            var img = new Image();
+            img.src = src;
+
+            // *这里的方法已经转移到了css里，暂时弃用
+            // // 为了防止图片在输入框内显示过大不好编辑
+            // img.style.width = "100px";
+            // 将img从HEMLElement转化为字符串
+            // 例如，转化结束后为'<img src="">'
+            var imgStr = img.outerHTML;
+            // 将img字符串插入到输入框中
+            insertAtCursor(chatInput, imgStr);
+        }
+        reader.readAsDataURL(file);
+    })
+}
+
+// 上传图片、文件
 function inputFile(settings) {
+    console.log(settings);
+    // -----------------设置最大图片大小及数量-----------------
+    if (settings.maxImageSize != undefined) {
+        maxImageSize = settings.maxImageSize;
+    } else {
+        maxImageSize = -1;
+    }
+
+    if (settings.maxImageNumber != undefined) {
+        maxImageNumber = settings.maxImageNumber;
+    } else {
+        maxImageNumber = -1;
+    }
+
     if (settings.enable) {
+        // -----------------上传图片的按钮-----------------
+        imageBtn.onclick = function() {
+                var imageInput = document.createElement('input');
+                imageInput.type = 'file';
+                imageInput.accept = 'image/*';
+                imageInput.multiple = true;
+                imageInput.style.display = 'none';
+                imageInput.onchange = function() {
+                        // 获取输入框内图片数量
+                        // 获取文件
+                        var imgNum = chatInput.getElementsByTagName('img').length;
+                        for (var i = 0; i < this.files.length; i++) {
+                            if (maxImageNumber == -1 || imgNum < maxImageNumber) {
+                                // 如果大小超过限制，改用文件上传
+                                if ((maxImageSize == -1 || this.files[i].size <= maxImageSize)) {
+                                    imgNum++;
+                                    addImage(this.files[i]);
+                                } else {
+                                    sendFile(this.files[i]);
+                                }
+                            }
+                        }
+                    }
+                    // 触发点击事件
+                imageInput.click();
+            }
+            // -----------------上传文件的按钮-----------------
         sendFile = settings.sendFileFunc;
-        // 上传文件
+        // 上传文件按钮
         fileBtn.onclick = function() {
             // 创建一个隐藏的上传文件的input，再借助点击这个input来上传文件
             var fileInput = document.createElement('input');
             fileInput.type = 'file';
+            fileInput.multiple = true;
             fileInput.style.display = 'none';
             fileInput.onchange = function() {
-                // 获取文件
-                var file = this.files[0];
-                sendFile(file);
-            }
-
-            // 触发点击事件
+                    // 获取文件
+                    for (var i = 0; i < this.files.length; i++) {
+                        var file = this.files[i];
+                        sendFile(file);
+                    }
+                }
+                // 触发点击事件
             fileInput.click();
         }
 
-        if (settings.enableDropFile) {
+        // -----------------拖拽上传-----------------
+        if (settings.enableDrop) {
             // 当downChild有文件被拖入时，也调用上传文件的函数
             downChild.ondrop = function(e) {
                 e.preventDefault();
+                // 阻止火狐浏览器默认打开文件的行为
+                e.stopPropagation();
                 downChild.style.border = "none";
                 // 获取被拖拽的文件并上传
-                var file = e.dataTransfer.files[0];
-                sendFile(file);
+                var imgNum = chatInput.getElementsByTagName('img').length;
+                for (var i = 0; i < e.dataTransfer.files.length; i++) {
+                    var file = e.dataTransfer.files[i];
+                    // 如果是图片，直接插入到输入框中
+                    if (file.type.indexOf("image") == 0) {
+                        if (maxImageNumber == -1 || imgNum < maxImageNumber) {
+                            // 如果大小超过限制，改用文件上传
+                            if ((maxImageSize == -1 || file.size <= maxImageSize)) {
+                                addImage(file);
+                                imgNum++;
+                            } else {
+                                sendFile(file);
+                            }
+                        }
+                    } else {
+                        sendFile(file);
+                    }
+                }
             }
 
             // 当downChild有文件被拖入时，改变downChild的边框颜色
@@ -165,5 +285,35 @@ function inputFile(settings) {
                 downChild.style.border = "none";
             }
         }
+    } else {
+        // 如果不允许上传，那么删除事件
+        imageBtn.onclick = null;
+        fileBtn.onclick = null;
+        // 删除拖拽事件
+        downChild.ondrop = null;
+        downChild.ondragover = null;
+        downChild.ondragleave = null;
     }
 }
+
+// TODO:可能富文本输入框的粘贴部分需要对Chrome浏览器做部分额外适配，以优化体验
+// 无格式粘贴
+chatInput.addEventListener('paste', function(e) {
+    onPaste(e);
+})
+
+//格式化粘贴文本方法
+function onPaste(event) {
+    // 如果粘贴的是文本，就清除格式后粘贴
+    if (event.clipboardData && event.clipboardData.getData) {
+        var text = event.clipboardData.getData('text/plain');
+        if (text) {
+            event.preventDefault();
+            document.execCommand('insertText', false, text);
+        }
+    }
+}
+
+window.addEventListener('DOMContentLoaded', function() {
+    chatInput.focus();
+});
