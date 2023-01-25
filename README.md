@@ -273,7 +273,7 @@ Example:
         // 允许发送文件
         enable: true,
         // 允许在输入框处拖拽发送文件
-        enableDropFile: true,
+        enableDrop: true,
         // 负责发送文件的函数（回调函数），file为传回的文件信息，与使用<input>标签获得的相同
         sendFileFunc: function(file) {
             alert(file.name);
