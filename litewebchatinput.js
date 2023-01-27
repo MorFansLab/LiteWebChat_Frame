@@ -23,6 +23,8 @@ var emojiMart = document.getElementById("emojiMart"); // 表情面板
 var toolMusk = document.getElementById("toolMusk"); // 表情面板遮罩
 var sendBtn = document.getElementById("sendBtn"); // 发送按钮
 var chatInput = document.querySelector('.lite-chatinput>.chatinput'); // 输入框
+
+var config = {}; // 设置
 // --------------------------------
 
 // Emoji Mart（表情面板）设置及唤起
@@ -168,7 +170,7 @@ function addImage(file) {
             var img = new Image();
             img.src = src;
 
-            // *这里的方法已经转移到了css里，暂时弃用
+            // *这里的方法已经转移到了css里，所以弃用
             // // 为了防止图片在输入框内显示过大不好编辑
             // img.style.width = "100px";
             // 将img从HEMLElement转化为字符串
@@ -183,7 +185,7 @@ function addImage(file) {
 
 // 上传图片、文件
 function inputFile(settings) {
-    console.log(settings);
+    config.input = settings;
     // -----------------设置最大图片大小及数量-----------------
     if (settings.maxImageSize != undefined) {
         maxImageSize = settings.maxImageSize;
