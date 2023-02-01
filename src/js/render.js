@@ -59,7 +59,7 @@ function renderTipHtml(content, css) {
 // 转义 C0 Controls and Basic Latin 中非数字和字母，C1 Controls and Latin-1 Supplement 全部
 // https://www.w3schools.com/charsets/ref_html_utf8.asp
 function escapeHtml(unsafe) {
-  return unsafe.replace(
+  return unsafe?.replace(
     /[\u0000-\u002F\u003A-\u0040\u005B-\u0060\u007B-\u00FF]/g,
     c => '&#' + ('000' + c.charCodeAt(0)).slice(-4) + ';'
   )

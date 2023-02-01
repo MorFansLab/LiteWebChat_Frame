@@ -1,26 +1,25 @@
+/*!
+ * LiteWebChat_Frame 2.1.1 (https://lab.morfans.cn/LiteWebChat_Frame)
+ * MorFans Lab(c) 2017-2023
+ * Licensed under LGPL
+ */@charset "UTF-8";
 /* 聊天区域 */
-
 .lite-chatbox {
   height: calc(100% - 150px);
 }
 
-
 /* .lite-chatbox内的最后一条消息的margin-bottom设置为20px，离下面远一点 */
-
-.lite-chatbox>div:last-child {
+.lite-chatbox > div:last-child {
   margin-bottom: 20px;
 }
 
-
 /* 输入框 */
-
-
 /* 缩小输入框内的图片，方便编辑 */
-
 .lite-chatinput img {
   max-width: 150px;
   max-height: 150px;
-  object-fit: contain;
+  -o-object-fit: contain;
+     object-fit: contain;
 }
 
 .lite-chatinput {
@@ -31,9 +30,7 @@
   background-color: #fff;
 }
 
-
 /* 聊天区域和输入框的分界线 */
-
 .lite-chatinput .boundary {
   cursor: s-resize;
   margin: 0 auto;
@@ -43,10 +40,8 @@
   background: #fff;
 }
 
-
 /* 输入框 */
-
-.lite-chatinput>.chatinput {
+.lite-chatinput > .chatinput {
   position: relative;
   overflow-y: scroll;
   /* margin: 0px 3px 0px 3px; */
@@ -65,16 +60,14 @@
   outline: none;
 }
 
-
 /* 发送按钮 */
-
 .lite-chatinput .send {
   float: right;
   padding: 4px 20px 4px 20px;
   margin-right: 40px;
   color: white;
-  background: -webkit-linear-gradient(70deg, #3FD1E1 0%, #44D7CD 100%);
-  background: linear-gradient(20deg, #3f8fe1cc 0%, #44d7c9 100%);
+  background: -o-linear-gradient(70deg, rgba(63, 143, 225, 0.8) 0%, #44d7c9 100%);
+  background: linear-gradient(20deg, rgba(63, 143, 225, 0.8) 0%, #44d7c9 100%);
   -webkit-box-shadow: 5px 5px 15px 0 rgba(102, 102, 102, 0.1);
   box-shadow: 5px 5px 15px 0 rgba(102, 102, 102, 0.1);
   border: none;
@@ -85,18 +78,16 @@
 }
 
 .lite-chatinput .send:hover {
-  background: -webkit-linear-gradient(70deg, #3FD1E1 0%, #44D7CD 60%);
-  background: linear-gradient(20deg, #3f8fe1cc 0%, #44d7c9 60%);
+  background: -o-linear-gradient(70deg, rgba(63, 143, 225, 0.8) 0%, #44d7c9 60%);
+  background: linear-gradient(20deg, rgba(63, 143, 225, 0.8) 0%, #44d7c9 60%);
 }
 
 .lite-chatinput .send:active {
-  background: -webkit-linear-gradient(70deg, #3FD1E1 0%, #44D7CD 120%);
-  background: linear-gradient(20deg, #3f8fe1cc 0%, #44d7c9 120%);
+  background: -o-linear-gradient(70deg, rgba(63, 143, 225, 0.8) 0%, #44d7c9 120%);
+  background: linear-gradient(20deg, rgba(63, 143, 225, 0.8) 0%, #44d7c9 120%);
 }
 
-
 /* 输入框上方的输入表情等功能按钮 */
-
 .lite-chatinput .tool-button {
   padding: 0px 3px 0px 3px;
   background: none;
@@ -121,9 +112,7 @@
   width: 18px;
 }
 
-
 /* 由功能按钮唤起的功能页面 */
-
 .lite-chatbox-tool {
   /* border: 5px solid red; */
   position: absolute;
@@ -132,9 +121,7 @@
   z-index: 3;
 }
 
-
 /* 部分功能页面需要用到的遮罩 */
-
 #toolMusk {
   /* border: 3px solid red; */
   position: absolute;
@@ -153,22 +140,16 @@
   float: right;
 }
 
-
 /* 滚动条 */
-
-
 /* Firefox */
-
 .lite-chatbox,
-.lite-chatinput>.chatinput,
+.lite-chatinput > .chatinput,
 .scroll {
   scrollbar-width: thin;
-  scrollbar-color: rgba(144, 147, 153, .3) rgba(144, 147, 153, .05);
+  scrollbar-color: rgba(144, 147, 153, 0.3) rgba(144, 147, 153, 0.05);
 }
 
-
 /* else broswer */
-
 ::-webkit-scrollbar {
   /*滚动条整体样式*/
   width: 10px;
@@ -179,7 +160,7 @@
 ::-webkit-scrollbar-thumb {
   /*滚动条里面小方块*/
   border-radius: 10px;
-  background-color: rgba(144, 147, 153, .3);
+  background-color: rgba(144, 147, 153, 0.3);
   border: 0;
 }
 
@@ -194,3 +175,4 @@
 ::-webkit-scrollbar-corner {
   background-color: transparent;
 }
+/*# sourceMappingURL=map/litewebchat_input.css.map */

@@ -6,7 +6,13 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "cssbuild": "npx gulp buildCss"
+    "build": "npx gulp build",
+    "rebuild": "npx gulp rebuild",
+    "css": "npx gulp buildLiteChat",
+    "icss": "npx gulp buildLiteChatInput",
+    "rjs": "npx gulp buildRenderJs",
+    "ijs": "npx gulp buildInputJs",
+    "html": "npx gulp buildHtml"
   },
   "keywords": [],
   "author": "SuperPaxos(Paxxs)",
