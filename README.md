@@ -4,21 +4,21 @@
 
 在线演示：
 
-- [~~性感聊天在线观看~~](https://lab.morfans.cn/LiteWebChat_Frame/chat_example.html)
-- [带输入框表情选取](https://lab.morfans.cn/LiteWebChat_Frame/chat_with_inputarea_example.html)
-- [带输入框表情选取简单JS渲染](https://lab.morfans.cn/LiteWebChat_Frame/chat_with_inputarea_module_example.html)
+- [~~性感聊天在线观看~~](https://lab.morfans.cn/LiteWebChat_Frame/dist/html/chat_example.html)
+- [带输入框表情选取](https://lab.morfans.cn/LiteWebChat_Frame/dist/html/chat_with_inputarea_example.html)
+- [带输入框表情选取简单JS渲染](https://lab.morfans.cn/LiteWebChat_Frame/dist/html/chat_with_inputarea_module_example.html)
 
 [本框架](https://github.com/MorFansLab/LiteWebChat_Frame) 大部分聊天对话所要求的样式特性已完成，能够助你快速开发聊天类对话界面
 
 ## 使用~~指南~~ (指北)
 
-### 安装
+### 使用
 
-我们仅提供了两种方式来获取 LiteWebChat_Frame， ~~但你可以通过各种奇淫技巧获取使用。~~
+我们提供了多种方式来获取 LiteWebChat_Frame， ~~你也可以通过各种奇淫技巧获取使用。~~
 
 #### 下载文件
 
-你可以直接从 GayHub 项目 [官网](https://github.com/MorFansLab/LiteWebChat_Frame) 直接克隆下载，其中包含了压缩过的和未压缩过的 CSS、JS 和 两个例子文件，以及图片文件。
+你可以直接从 GitHub 项目 [官网](https://github.com/MorFansLab/LiteWebChat_Frame) 直接克隆下载，其中 dist 目录包含了压缩过的和未压缩过的 CSS、JS 、例子以及图片文件。
 
 #### 直接引用
 
@@ -98,7 +98,7 @@ body {
 
 可以参考配合一下简易的 JS 消息渲染：
 
-- 效果和使用参考：[带输入框表情选取简单JS渲染](https://lab.morfans.cn/LiteWebChat_Frame/chat_with_inputarea_module_example.html)
+- 效果和使用参考：[带输入框表情选取简单JS渲染](https://lab.morfans.cn/LiteWebChat_Frame/dist/html/chat_with_inputarea_module_example.html)
 
 字段：
 
@@ -171,11 +171,7 @@ body {
 
 ### 兼容性
 
-兼容 Edge和其他主流浏览器的最新版本。
-
-对于IE浏览器请微修改右对话气泡背景即可使用
-
-[参考](http://browsershots.org/https://lab.morfans.cn/LiteWebChat_Frame/chat_example.html)
+兼容 Edge 和其他主流浏览器的最新版本。
 
 ## 组件
 
@@ -247,6 +243,8 @@ Example:
     <!-- 按钮内部的为svg图片 -->
     <!-- 表情输入框按钮 -->
     <button title="表情" type="button" class="tool-button float-left" id="emojiBtn"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 26 26"><path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0m0 22C6.486 22 2 17.514 2 12S6.486 2 12 2s10 4.486 10 10-4.486 10-10 10"></path><path d="M8 7a2 2 0 1 0-.001 3.999A2 2 0 0 0 8 7M16 7a2 2 0 1 0-.001 3.999A2 2 0 0 0 16 7M15.232 15c-.693 1.195-1.87 2-3.349 2-1.477 0-2.655-.805-3.347-2H15m3-2H6a6 6 0 1 0 12 0"></path></svg></button>
+    <!-- 插入图片按钮 -->
+    <button title="插入图片" type="button" class="tool-button float-left" id="imageBtn"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!-- Font Awesome Free 5.15.4 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) --><path d="M464 64H48C21.49 64 0 85.49 0 112v288c0 26.51 21.49 48 48 48h416c26.51 0 48-21.49 48-48V112c0-26.51-21.49-48-48-48zm-6 336H54a6 6 0 0 1-6-6V118a6 6 0 0 1 6-6h404a6 6 0 0 1 6 6v276a6 6 0 0 1-6 6zM128 152c-22.091 0-40 17.909-40 40s17.909 40 40 40 40-17.909 40-40-17.909-40-40-40zM96 352h320v-80l-87.515-87.515c-4.686-4.686-12.284-4.686-16.971 0L192 304l-39.515-39.515c-4.686-4.686-12.284-4.686-16.971 0L96 304v48z"/></svg></button>
     <!-- 发送文件按钮 -->
     <button title="发送文件" type="button" class="tool-button float-left" id="fileBtn"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><!-- Font Awesome Free 5.15.4 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) --><path d="M527.9 224H480v-48c0-26.5-21.5-48-48-48H272l-64-64H48C21.5 64 0 85.5 0 112v288c0 26.5 21.5 48 48 48h400c16.5 0 31.9-8.5 40.7-22.6l79.9-128c20-31.9-3-73.4-40.7-73.4zM48 118c0-3.3 2.7-6 6-6h134.1l64 64H426c3.3 0 6 2.7 6 6v42H152c-16.8 0-32.4 8.8-41.1 23.2L48 351.4zm400 282H72l77.2-128H528z"/></svg></button>
     <!-- 全屏编辑按钮 -->
@@ -254,7 +252,7 @@ Example:
     <!-- 退出全屏编辑 -->
     <button style="display:none" title="退出" type="button" class="tool-button float-right" id="exitFullScreen"><svg svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 1024"><path d="M422.648199 431.157895c5.67313 0 8.509695-2.836565 11.346261-5.67313 2.836565-2.836565 5.67313-8.509695 5.67313-11.346261V51.058172c0-2.836565 0-5.67313-2.836565-5.67313h-5.67313L306.34903 170.193906 141.828255 5.67313C138.99169 2.836565 133.31856 0 130.481994 0c-5.67313 0-11.34626 2.836565-14.182825 5.67313L5.67313 116.299169c-2.836565 2.836565-5.67313 8.509695-5.67313 11.34626 0 5.67313 2.836565 11.34626 5.67313 14.182826L170.193906 303.512465l-119.135734 119.135734c-2.836565 2.836565-2.836565 2.836565 0 5.673131 0 2.836565 2.836565 2.836565 5.67313 2.836565h365.916897z m0 156.01108c5.67313 0 8.509695 2.836565 11.346261 5.67313 2.836565 2.836565 5.67313 8.509695 5.67313 11.346261v365.916897c0 2.836565 0 5.67313-2.836565 5.67313h-5.67313L306.34903 850.969529 141.828255 1015.490305c-2.836565 2.836565-8.509695 5.67313-11.346261 5.67313-5.67313 0-8.509695-2.836565-11.34626-5.67313L8.509695 904.864266c-5.67313-2.836565-8.509695-8.509695-8.509695-11.34626s2.836565-8.509695 5.67313-11.346261L170.193906 717.65097l-119.135734-119.135735c-2.836565-2.836565-2.836565-2.836565 0-5.67313 0-2.836565 2.836565-2.836565 5.67313-2.836565l365.916897-2.836565z m175.867036-156.01108c-5.67313 0-8.509695-2.836565-11.34626-5.67313-2.836565-2.836565-5.67313-8.509695-5.67313-11.346261V51.058172c0-2.836565 0-5.67313 2.836565-5.67313h5.67313L714.814404 170.193906 879.33518 5.67313c2.836565-2.836565 8.509695-5.67313 11.34626-5.67313 5.67313 0 8.509695 2.836565 11.346261 5.67313l110.626039 110.626039c5.67313 2.836565 8.509695 8.509695 8.509695 11.34626 0 5.67313-2.836565 8.509695-5.67313 11.346261L850.969529 303.512465l119.135734 119.135734c2.836565 2.836565 2.836565 2.836565 0 5.673131 0 2.836565-2.836565 2.836565-5.67313 2.836565H598.515235z m0 156.01108c-5.67313 0-8.509695 2.836565-11.34626 5.67313-2.836565 2.836565-5.67313 8.509695-5.67313 11.346261v365.916897c0 2.836565 0 5.67313 2.836565 5.67313h5.67313l121.972299-121.972299 164.520776 164.520776c2.836565 2.836565 8.509695 5.67313 11.34626 5.67313 5.67313 0 8.509695-2.836565 11.346261-5.67313l110.626039-110.626039c2.836565-2.836565 5.67313-8.509695 5.67313-11.34626s-2.836565-8.509695-5.67313-11.346261L850.969529 717.65097l119.135734-119.135735c2.836565-2.836565 2.836565-2.836565 0-5.67313 0-2.836565-2.836565-2.836565-5.67313-2.836565l-365.916898-2.836565z"></path></svg></button>
     <!-- 文字输入框 -->
-    <textarea class="chatinput" aria-label="List description"></textarea>
+    <div aria-label="input area" class="editor chatinput" contenteditable="true" ref="editor"></div>
     <!-- 发送按钮 -->
     <button class="send">发送</button>
 </div>
@@ -271,10 +269,13 @@ Example:
         // 允许发送文件
         enable: true,
         // 允许在输入框处拖拽发送文件
-        enableDropFile: true,
+        enableDrop: true,
+        maxImageSize: 1024 * 1024 * 10, // 图片最大10MB，超过了就要用文件发送，默认为-1（无限制），可以不设置
+        maxImageNumber: 20, // 输入框内最多同时存在20张图片，默认为-1（无限制），可以不设置
         // 负责发送文件的函数（回调函数），file为传回的文件信息，与使用<input>标签获得的相同
         sendFileFunc: function(file) {
             alert(file.name);
+            // console.log(file);
         }
     });
 </script>
@@ -291,4 +292,14 @@ Example（最简）：
     <div style="display:none" id="emojiMart" class="lite-chatbox-tool"></div>
     <div style="display:none" id="toolMusk"></div>
 </div>
+```
+
+## 开发
+
+使用 pnpm 或 npm 或 yarn，以 pnpm 为例：
+
+```
+pnpm i
+
+pnpm run build
 ```
