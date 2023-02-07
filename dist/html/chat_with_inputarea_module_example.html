@@ -197,28 +197,46 @@ headIcon: '../images/A.jpg',
 name: 'chenjunyu19',
 position: 'left',
 html: ` 以上就是全部的特性，以后有空再更 `
+},{
+messageType: 'raw',
+htitleType: 'owner',
+htitle: 'NEW',
+headIcon: '../images/B.jpg',
+name: 'SuperPaxxs',
+position: 'right',
+html: 'LiteChat_Frame 拥有暗色模式, 快来试试吧:<br\/><br\/><style>.theme-switch{background: none;border: solid 1px;border-radius: 2em;font: inherit;cursor: pointer;color: #fff;}<\/style><button class="theme-switch">切换配色 <\/button>',
 }, ];
-beforeRenderingHTML(htmls, '.lite-chatbox');</script><script>document.querySelector('.send').onclick = function() {
+beforeRenderingHTML(htmls, '.lite-chatbox');</script><script>const btns = document.querySelectorAll('.theme-switch');
+const html = document.documentElement;
+
+const addEvent = btn => {btn.addEventListener('click', e => {let theme = html.getAttribute("litewebchat-theme");
+    if (theme === 'dark') {html.setAttribute("litewebchat-theme", 'light');
+    } else {html.setAttribute("litewebchat-theme", 'dark');
+    }
+  });
+};
+btns.forEach(btn => {addEvent(btn);
+});</script><script>document.querySelector('.send').onclick = function() {
   htmls.push({
-      messageType: 'raw',
-      headIcon: '../images/B.jpg',
-      name: 'SuperPaxxs',
-      position: 'right',
-      html: document.querySelector('.chatinput').innerHTML
+    messageType: 'raw',
+    headIcon: '../images/B.jpg',
+    name: 'SuperPaxxs',
+    position: 'right',
+    html: document.querySelector('.chatinput').innerHTML
   })
   document.querySelector('.chatinput').innerHTML = '';
   beforeRenderingHTML(htmls, '.lite-chatbox');
 };
 // 设置发送文件
 inputFile({
-    // 允许发送文件
-    enable: true,
-    // 允许在输入框处拖拽发送文件
-    enableDrop: true,
-    maxImageSize: 1024 * 1024 * 10, // 图片最大 10MB，超过了就要用文件发送，默认为 -1（无限制），可以不设置
-    maxImageNumber: 20, // 输入框内最多同时存在 20 张图片，默认为 -1（无限制），可以不设置
-    // 负责发送文件的函数（回调函数），file 为传回的文件信息，与使用 <input> 标签获得的相同
-    sendFileFunc: function(file) {alert(file.name);
-        // console.log(file);
-    }
+  // 允许发送文件
+  enable: true,
+  // 允许在输入框处拖拽发送文件
+  enableDrop: true,
+  maxImageSize: 1024 * 1024 * 10, // 图片最大 10MB，超过了就要用文件发送，默认为 -1（无限制），可以不设置
+  maxImageNumber: 20, // 输入框内最多同时存在 20 张图片，默认为 -1（无限制），可以不设置
+  // 负责发送文件的函数（回调函数），file 为传回的文件信息，与使用 <input> 标签获得的相同
+  sendFileFunc: function(file) {alert(file.name);
+    // console.log(file);
+  }
 });</script></body></html>

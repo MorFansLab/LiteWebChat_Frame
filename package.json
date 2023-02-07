@@ -1,6 +1,6 @@
 {
   "name": "litewebchat_frame",
-  "version": "2.1.1",
+  "version": "2.2.1",
   "description": "一个简洁，易用的 HTML 聊天框架",
   "homepage": "https://lab.morfans.cn/LiteWebChat_Frame",
   "main": "index.js",

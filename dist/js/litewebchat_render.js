@@ -1,5 +1,5 @@
 /*!
- * LiteWebChat_Frame 2.1.1 (https://lab.morfans.cn/LiteWebChat_Frame)
+ * LiteWebChat_Frame 2.2.1 (https://lab.morfans.cn/LiteWebChat_Frame)
  * MorFans Lab(c) 2017-2023
  * Licensed under LGPL
  */"use strict";
@@ -30,7 +30,7 @@ function beforeRenderingHTML(data, chatboxClass) {
     }
     data[i].isRender = true;
   }
-  chatBox.innerHTML += htmlStr;
+  chatBox.insertAdjacentHTML('beforeend', htmlStr);
   setTimeout(function () {
     if (chatBox.scrollHeight > chatBox.clientHeight) {
       chatBox.scrollTop = chatBox.scrollHeight;

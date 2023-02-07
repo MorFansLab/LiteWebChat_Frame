@@ -1,5 +1,5 @@
 /*!
- * LiteWebChat_Frame 2.1.1 (https://lab.morfans.cn/LiteWebChat_Frame)
+ * LiteWebChat_Frame 2.2.1 (https://lab.morfans.cn/LiteWebChat_Frame)
  * MorFans Lab(c) 2017-2023
  * Licensed under LGPL
  */"use strict";
@@ -18,6 +18,8 @@ var upperChild = document.querySelector('.lite-chatbox');
 var oLine = document.querySelector('.lite-chatinput hr');
 // 下半部分的输入框区域
 var downChild = document.querySelector('.lite-chatinput');
+var downHeight = downChild.clientHeight;
+var upperHeight = upperChild.clientHeight;
 
 // 以下为输入框区域的按钮
 var emojiBtn = document.getElementById("emojiBtn"); // 表情按钮
@@ -86,11 +88,12 @@ function insertAtCursor(myField, myValue) {
 // 调整聊天区域和输入框区域比例的函数
 oLine.onmousedown = function (ev) {
   // 更改oLine颜色为蓝色，方便查看分界线
+  var olineOriBgColor = oLine.style.backgroundColor;
   oLine.style.backgroundColor = "#1E90FF";
   var iEvent = ev || event;
   var dy = iEvent.clientY; //当你第一次单击的时候，存储y轴的坐标。//相对于浏览器窗口
-  var upperHeight = upperChild.offsetHeight;
-  var downHeight = downChild.offsetHeight;
+  upperHeight = upperChild.offsetHeight;
+  downHeight = downChild.offsetHeight;
   document.onmousemove = function (ev) {
     var iEvent = ev || event;
     var diff = iEvent.clientY - dy; //移动的距离（向上滑时为负数,下滑时为正数）
@@ -101,8 +104,8 @@ oLine.onmousedown = function (ev) {
     }
   };
   document.onmouseup = function () {
-    // 更改oLine颜色为白色
-    oLine.style.backgroundColor = "#fff";
+    // 更改oLine颜色为原色
+    oLine.style.backgroundColor = olineOriBgColor;
     document.onmousedown = null;
     document.onmousemove = null;
   };
@@ -114,8 +117,8 @@ emojiBtn.onclick = function () {
   emojiMart.style.display = "block";
   toolMusk.style.display = "block";
   var emojiHeight = emojiMart.offsetHeight;
-  var downHeight = downChild.clientHeight;
-  var upperHeight = upperChild.clientHeight;
+  downHeight = downChild.clientHeight;
+  upperHeight = upperChild.clientHeight;
   if (emojiHeight < upperHeight) {
     emojiMart.style.bottom = "".concat(downHeight + 3, "px");
     emojiMart.style.top = '';
@@ -127,8 +130,8 @@ emojiBtn.onclick = function () {
 
 // 全屏编辑文字
 editFullScreen.onclick = function () {
-  var downHeight = downChild.clientHeight;
-  var upperHeight = upperChild.clientHeight;
+  downHeight = downChild.clientHeight;
+  upperHeight = upperChild.clientHeight;
   downChild.style.height = "100%";
   upperChild.style.height = "0px";
   editFullScreen.style.display = "none";
