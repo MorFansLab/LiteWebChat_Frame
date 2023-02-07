@@ -1,0 +1,11 @@
+@import '../../variable/color/htitle';
+
+.htitle {
+  &.admin {
+    @include theme('background-color', $chat-message-bg-color-htitle-admin);
+  }
+
+  &.owner {
+    @include theme('background-color', $chat-message-bg-color-htitle-owner);
+  }
+}

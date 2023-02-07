@@ -1,0 +1,27 @@
+@import '../../variable/color/htitle';
+
+$chat-message-bg-color-htitle: (
+  light:#cccccc,
+  dark:rgb(76, 80, 82)
+);
+
+// 名称与头衔对齐
+>span {
+  vertical-align: middle;
+}
+
+// 头衔
+.htitle {
+  display: inline-block;
+  padding: 0 3px 0 3px;
+  @include theme('background-color', $chat-message-bg-color-htitle);
+  color: #ffffff;
+  border-radius: 4px;
+  margin-right: 4px;
+  font-size: 11px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  vertical-align: middle;
+  max-width: 50px;
+}

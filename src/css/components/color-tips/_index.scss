@@ -1,0 +1,18 @@
+// 提示条颜色
+@import '../../variable/color/tips';
+
+$tips-color-map: (
+  primary: $chat-message-bg-color-tips-primary,
+  success: $chat-message-bg-color-tips-success,
+  info: $chat-message-bg-color-tips-info,
+  warning: $chat-message-bg-color-tips-warning,
+  danger: $chat-message-bg-color-tips-danger
+);
+
+.tips {
+  @each $type in map-keys($tips-color-map) {
+    .tips-#{$type} {
+      @include theme('background-color', map-get($tips-color-map, $type));
+    }
+  }
+}
