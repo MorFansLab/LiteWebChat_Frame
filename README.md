@@ -28,14 +28,14 @@
 <!-- 两个任选一个 github pages -->
 <link
   type="text/css"
-  href="https://lab.morfans.cn/LiteWebChat_Frame/litewebchat.min.css"
+  href="https://lab.morfans.cn/LiteWebChat_Frame/dist/css/litewebchat.min.css"
   rel="stylesheet"
 />
 
 <!-- 两个任选一个 jsdelivr -->
 <link
   type="text/css"
-  href="https://cdn.jsdelivr.net/gh/MorFansLab/LiteWebChat_Frame/litewebchat.min.css"
+  href="https://cdn.jsdelivr.net/gh/MorFansLab/LiteWebChat_Frame/dist/css/litewebchat.min.css"
   rel="stylesheet"
 />
 ```
@@ -47,11 +47,14 @@
 ```html
 <link
   type="text/css"
-  href="https://cdn.jsdelivr.net/gh/MorFansLab/LiteWebChat_Frame/litewebchatinput.min.css"
+  href="https://cdn.jsdelivr.net/gh/MorFansLab/LiteWebChat_Frame/dist/css/litewebchat_input.min.css"
   rel="stylesheet"
 />
 <script src="https://cdn.jsdelivr.net/npm/emoji-mart@latest/dist/browser.js"></script>
-<script src="https://cdn.jsdelivr.net/gh/MorFansLab/LiteWebChat_Frame/litewebchatinput.min.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/MorFansLab/LiteWebChat_Frame/dist/js/litewebchat_input.min.js"></script>
+
+<!-- 渲染 -->
+<script src="https://cdn.jsdelivr.net/gh/MorFansLab/LiteWebChat_Frame/dist/js/litewebchat_render.min.js"></script>
 ```
 
 ## 使用 LiteWebChat
