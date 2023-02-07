@@ -4,6 +4,9 @@
 
 @import './variable';
 
+// 滚动条着色
+@import './components/color-scrollbar';
+
 .lite-chatbox {
   // 聊天提示
   @import './components/tips';
