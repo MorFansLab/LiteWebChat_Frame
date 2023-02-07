@@ -1,0 +1,46 @@
+// 非 FF 浏览器配色
+$scrollbar-color: (
+  light:rgb(144 147 153 / 50%),
+  dark:rgb(84 91 95 / 50%)
+);
+$scrollbar-bg-color: (
+  light:#fff,
+  dark:rgb(24, 26, 27)
+);
+
+* {
+  // 默认暗色
+  scrollbar-color: #5c6163 #383b3c08;
+}
+
+/* else broswer */
+::-webkit-scrollbar {
+  /* 滚动条整体样式 */
+  width: 7px;
+  /* 高宽分别对应横竖滚动条的尺寸 */
+  height: 1px;
+}
+
+::-webkit-scrollbar-thumb {
+  /*滚动条里面小方块*/
+  border-radius: 10px;
+  // background-color: ;
+  @include theme('background-color', $scrollbar-color);
+  border: 0;
+}
+
+::-webkit-scrollbar-track {
+  /*滚动条里面轨道*/
+  @include theme('background', $scrollbar-bg-color);
+  min-height: 50%;
+  min-height: 20px;
+}
+
+::-webkit-scrollbar-corner {
+  background-color: transparent;
+}
+
+::selection {
+  background-color: #1963bd !important;
+  color: #f8f6f3 !important;
+}

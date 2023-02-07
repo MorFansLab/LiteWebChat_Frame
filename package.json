@@ -1,0 +1,46 @@
+{
+  "name": "litewebchat_frame",
+  "version": "2.2.1",
+  "description": "一个简洁，易用的 HTML 聊天框架",
+  "homepage": "https://lab.morfans.cn/LiteWebChat_Frame",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "npx gulp build",
+    "rebuild": "npx gulp rebuild",
+    "css": "npx gulp buildLiteChat",
+    "icss": "npx gulp buildLiteChatInput",
+    "rjs": "npx gulp buildRenderJs",
+    "ijs": "npx gulp buildInputJs",
+    "html": "npx gulp buildHtml"
+  },
+  "keywords": [],
+  "author": "SuperPaxos(Paxxs)",
+  "license": "LGPL",
+  "bugs": {
+    "url": "https://github.com/MorFansLab/LiteWebChat_Frame/issues"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.20.12",
+    "@babel/preset-env": "^7.20.2",
+    "gulp": "^4.0.2",
+    "gulp-autoprefixer": "^8.0.0",
+    "gulp-babel": "^8.0.0",
+    "gulp-clean": "^0.4.0",
+    "gulp-clean-css": "^4.3.0",
+    "gulp-cli": "^2.3.0",
+    "gulp-header": "^2.0.9",
+    "gulp-imagemin": "^7.1.0",
+    "gulp-pangu": "^0.0.1",
+    "gulp-pug": "^5.0.0",
+    "gulp-rename": "^2.0.0",
+    "gulp-sass": "^5.1.0",
+    "gulp-sourcemaps": "^3.0.0",
+    "gulp-terser": "^2.1.0",
+    "gulp-util": "^3.0.8",
+    "sass": "^1.57.1"
+  },
+  "dependencies": {
+    "normalize.css": "^8.0.1"
+  }
+}

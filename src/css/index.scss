@@ -1,0 +1,158 @@
+@import "normalize.css/normalize";
+
+@import './mixin/theme';
+
+@import './variable';
+
+// 滚动条着色
+@import './components/color-scrollbar';
+
+body {
+  font-family: Helvetica, "PingFang SC", "Microsoft YaHei", sans-serif;
+}
+
+.lite-chatbox {
+  // 聊天提示
+  @import './components/tips';
+  @import './components/color-tips';
+
+  scroll-behavior: smooth;
+
+  padding: 0px;
+  width: 100%;
+  position: relative;
+  font-size: 18px;
+
+  @include theme('background-color', $chat-content-bg-color);
+
+  overflow: {
+    y: auto;
+    x: hidden;
+  }
+
+  .cmsg {
+    position: relative;
+    margin: 4px 7px;
+    min-height: 50px;
+    border: 0;
+  }
+
+  .cright {
+    text-align: right;
+    margin-left: 64px;
+
+    img.headIcon {
+      right: 0;
+    }
+
+    .name {
+      margin: 0 48px 2px 0;
+    }
+
+    .content {
+      margin: 0 48px 0 0;
+      border-radius: 20px 0 20px 20px;
+      color: white;
+      @include theme('background', $chat-message-bg-color-me);
+
+      box-shadow: 5px 5px 15px 0 rgba(102, 102, 102, 0.15);
+
+      &::after {
+        left: -12px;
+        top: 8px;
+      }
+    }
+  }
+
+  .cleft {
+    text-align: left;
+    margin-right: 64px;
+
+    img.headIcon {
+      left: 0;
+    }
+
+    .name {
+      margin: 0 0 2px 48px;
+    }
+
+    .content {
+      margin: 0 0 0 48px;
+      border-radius: 0 20px 20px 20px;
+      @include theme('background', $chat-message-bg-color);
+      @include theme('color', $chat-message-color, );
+
+      border: 1px solid rgba(0, 0, 0, 0.05);
+      box-shadow: 5px 5px 15px 0 rgba(102, 102, 102, 0.1);
+
+      &::after {
+        left: -12px;
+        top: 8px;
+      }
+    }
+  }
+
+  // 头像
+  img {
+    &.headIcon {
+      width: 34px;
+      height: 34px;
+      top: 9px;
+      position: absolute;
+    }
+
+    // 圆形头像
+    &.radius {
+      border-radius: 50%;
+    }
+
+    // .cright & {
+    //   right: 0;
+    // }
+
+    // end of img
+  }
+
+  // 昵称
+  .name {
+    color: #8b8b8b;
+    font-size: 12px;
+    display: block;
+    line-height: 18px;
+
+    // 头衔
+    @import './components/htitle';
+    @import './components/color-htitle';
+    // end of .name
+  }
+
+  .content {
+    word-break: break-all;
+    word-wrap: break-word;
+    text-align: left;
+    position: relative;
+    display: inline-block;
+    font-size: 15px;
+    padding: 10px 15px;
+    line-height: 20px;
+    white-space: pre-wrap;
+    // 用于撑开空白消息
+    min-width: 9px;
+    min-height: 18px;
+
+    // 处理图片
+    img {
+      width: 100%;
+      height: auto;
+    }
+
+    // 超链接
+    a {
+      @include theme('color', $chat-message-color-herf);
+      margin: 0 5px;
+      cursor: hand;
+    }
+
+    // end of .content
+  }
+}
