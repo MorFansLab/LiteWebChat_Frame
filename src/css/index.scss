@@ -7,6 +7,10 @@
 // 滚动条着色
 @import './components/color-scrollbar';
 
+body {
+  font-family: Helvetica, "PingFang SC", "Microsoft YaHei", sans-serif;
+}
+
 .lite-chatbox {
   // 聊天提示
   @import './components/tips';
@@ -15,13 +19,9 @@
   padding: 0px;
   width: 100%;
   position: relative;
+  font-size: 18px;
 
   @include theme('background-color', $chat-content-bg-color);
-
-  font: {
-    family: Helvetica, "PingFang SC", "Microsoft YaHei", sans-serif;
-    size: 18px;
-  }
 
   overflow: {
     y: auto;

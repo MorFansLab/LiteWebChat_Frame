@@ -5,3 +5,17 @@
     @content;
   }
 }
+
+@mixin push-animate($time: .2, $scaleHover: 1.1, $scalePush: 0.9) {
+  transition: all #{$time}s; // 让按下有呼吸感
+
+  &:hover {
+    transform: scale($scaleHover);
+    opacity: .7;
+  }
+
+  &:active {
+    transform: scale($scalePush);
+    opacity: 1;
+  }
+}

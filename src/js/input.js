@@ -85,6 +85,7 @@ function insertAtCursor(myField, myValue) {
 // 调整聊天区域和输入框区域比例的函数
 oLine.onmousedown = function (ev) {
   // 更改oLine颜色为蓝色，方便查看分界线
+  const olineOriBgColor = oLine.style.backgroundColor;
   oLine.style.backgroundColor = "#1E90FF";
   var iEvent = ev || event;
   var dy = iEvent.clientY; //当你第一次单击的时候，存储y轴的坐标。//相对于浏览器窗口
@@ -100,8 +101,8 @@ oLine.onmousedown = function (ev) {
     }
   };
   document.onmouseup = function () {
-    // 更改oLine颜色为白色
-    oLine.style.backgroundColor = "#fff";
+    // 更改oLine颜色为原色
+    oLine.style.backgroundColor = olineOriBgColor;
     document.onmousedown = null;
     document.onmousemove = null;
   };

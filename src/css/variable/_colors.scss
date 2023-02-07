@@ -26,3 +26,15 @@ $chat-message-color-herf: (
   light: #0072C1,
   dark: #00c3ff
 );
+
+// 输入框背景
+$chat-bg-color-input: (
+  light: #fff,
+  dark: #202223
+);
+
+// 输入框前景
+$chat-color-input: $chat-message-color;
+
+// 输入框按钮
+$chat-bg-color-button: $chat-message-bg-color-me;

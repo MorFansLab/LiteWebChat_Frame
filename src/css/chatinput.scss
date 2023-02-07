@@ -1,5 +1,9 @@
-// 聊天区域
+@import './mixin/theme';
+@import './mixin/helper';
 
+@import './variable';
+
+// 聊天区域
 .lite-chatbox {
   height: calc(100% - 150px);
 
@@ -15,7 +19,7 @@
   height: 150px;
   position: relative;
   bottom: 0px;
-  background-color: #fff;
+  @include theme('background-color', $chat-bg-color-input);
 
   // 缩小输入框内的图片，方便编辑
   img {
@@ -31,7 +35,7 @@
     border-width: 1px 0px 0px 0px;
     border-color: rgba(0, 0, 0, 0.2);
     height: 5px;
-    background: #fff;
+    @include theme('background', $chat-bg-color-input);
   }
 
   // 输入框
@@ -47,7 +51,8 @@
     border: none;
     outline: none;
     resize: none;
-    font-size: 20px;
+    font-size: 18px;
+    @include theme('color', $chat-color-input);
     word-break: break-all;
     overflow-wrap: break-word;
     padding: 5px;
@@ -58,20 +63,18 @@
   .send {
     float: right;
     padding: 4px 20px 4px 20px;
-    margin-right: 40px;
+
+    margin: {
+      right: 12px;
+      top: -2px;
+    }
+
     color: white;
-    background: linear-gradient(20deg, #3f8fe1cc 0%, #44d7c9 100%);
+    @include theme('background', $chat-message-bg-color-me);
     box-shadow: 5px 5px 15px 0 rgba(102, 102, 102, 0.1);
     border: none;
-    border-radius: 6px;
-
-    &:hover {
-      background: linear-gradient(20deg, #3f8fe1cc 0%, #44d7c9 60%);
-    }
-
-    &:active {
-      background: linear-gradient(20deg, #3f8fe1cc 0%, #44d7c9 120%);
-    }
+    border-radius: 4px;
+    @include push-animate;
   }
 
   // 输入框上方的输入表情等功能按钮
@@ -81,14 +84,7 @@
     border: none;
     margin: 5px;
     margin-bottom: 0px;
-
-    &:hover {
-      background: rgb(241, 241, 241);
-    }
-
-    &:active {
-      background: rgb(230, 230, 230);
-    }
+    @include push-animate;
 
     path {
       fill: rgb(139, 135, 153);
@@ -103,7 +99,6 @@
 }
 
 /* 由功能按钮唤起的功能页面 */
-
 .lite-chatbox-tool {
   /* border: 5px solid red; */
   position: absolute;
