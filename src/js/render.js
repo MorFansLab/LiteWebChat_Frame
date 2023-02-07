@@ -25,7 +25,8 @@ function beforeRenderingHTML(data, chatboxClass) {
     }
     data[i].isRender = true;
   }
-  chatBox.innerHTML += htmlStr;
+
+  chatBox.insertAdjacentHTML('beforeend',htmlStr);
   setTimeout(() => {
     if (chatBox.scrollHeight > chatBox.clientHeight) {
       chatBox.scrollTop = chatBox.scrollHeight;
