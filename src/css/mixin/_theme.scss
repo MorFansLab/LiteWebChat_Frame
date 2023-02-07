@@ -1,0 +1,20 @@
+@mixin theme($key, $map_key) {
+  $theme_colors: light,
+  dark;
+
+  @each $theme in $theme_colors {
+
+    @if $theme ==light {
+      // default light
+      #{$key}: map-get($map: $map_key, $key: $theme);
+    }
+
+    @else {
+
+      // 生成其他
+      [litewebchat-theme=#{$theme}] & {
+        #{$key}: map-get($map: $map_key, $key: $theme);
+      }
+    }
+  }
+}

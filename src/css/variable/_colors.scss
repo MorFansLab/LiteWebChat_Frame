@@ -1,0 +1,40 @@
+// 聊天背景色
+$chat-content-bg-color: (
+  light: #f8f9fa,
+  dark:#131415
+);
+
+// 聊天消息类
+// 聊天气泡双方背景
+$chat-message-bg-color: (
+  light:#fff,
+  dark:#22242a
+);
+
+$chat-message-bg-color-me: (
+  light:linear-gradient(20deg, #3f8fe1cc 0%, #44d7c9 100%),
+  dark:linear-gradient(20deg, rgba(25, 91, 159, 0.8) 0px, rgb(33, 154, 146) 100%)
+);
+
+// 聊天气泡对方前景
+$chat-message-color: (
+  light:#373737,
+  dark:#d4d4d4
+);
+
+$chat-message-color-herf: (
+  light: #0072C1,
+  dark: #00c3ff
+);
+
+// 输入框背景
+$chat-bg-color-input: (
+  light: #fff,
+  dark: #202223
+);
+
+// 输入框前景
+$chat-color-input: $chat-message-color;
+
+// 输入框按钮
+$chat-bg-color-button: $chat-message-bg-color-me;

@@ -1,14 +1,29 @@
 @import "normalize.css/normalize";
 
+@import './mixin/theme';
+
+@import './variable';
+
+// 滚动条着色
+@import './components/color-scrollbar';
+
+body {
+  font-family: Helvetica, "PingFang SC", "Microsoft YaHei", sans-serif;
+}
+
 .lite-chatbox {
+  // 聊天提示
+  @import './components/tips';
+  @import './components/color-tips';
+
+  scroll-behavior: smooth;
+
   padding: 0px;
   width: 100%;
   position: relative;
+  font-size: 18px;
 
-  font: {
-    family: Helvetica, "PingFang SC", "Microsoft YaHei", sans-serif;
-    size: 18px;
-  }
+  @include theme('background-color', $chat-content-bg-color);
 
   overflow: {
     y: auto;
@@ -38,7 +53,8 @@
       margin: 0 48px 0 0;
       border-radius: 20px 0 20px 20px;
       color: white;
-      background: linear-gradient(20deg, #3f8fe1cc 0%, #44d7c9 100%);
+      @include theme('background', $chat-message-bg-color-me);
+
       box-shadow: 5px 5px 15px 0 rgba(102, 102, 102, 0.15);
 
       &::after {
@@ -63,9 +79,10 @@
     .content {
       margin: 0 0 0 48px;
       border-radius: 0 20px 20px 20px;
-      color: #666;
+      @include theme('background', $chat-message-bg-color);
+      @include theme('color', $chat-message-color, );
+
       border: 1px solid rgba(0, 0, 0, 0.05);
-      background: #FFFFFF;
       box-shadow: 5px 5px 15px 0 rgba(102, 102, 102, 0.1);
 
       &::after {
@@ -82,12 +99,11 @@
       height: 34px;
       top: 9px;
       position: absolute;
-      border: 1px solid #c5d4c4;
     }
 
     // 圆形头像
     &.radius {
-      border-radius: 100%;
+      border-radius: 50%;
     }
 
     // .cright & {
@@ -104,30 +120,11 @@
     display: block;
     line-height: 18px;
 
-    // 名称与头衔对齐
-    >span {
-      vertical-align: middle;
-    }
-
     // 头衔
-    .htitle {
-      display: inline-block;
-      padding: 0 3px 0 3px;
-      background-color: #cccccc;
-      color: #ffffff;
-      border-radius: 4px;
-      margin-right: 4px;
-      font-size: 11px;
-      overflow: hidden;
-      text-overflow: ellipsis;
-      white-space: nowrap;
-      vertical-align: middle;
-      max-width: 50px;
-    }
-
+    @import './components/htitle';
+    @import './components/color-htitle';
     // end of .name
   }
-
 
   .content {
     word-break: break-all;
@@ -151,59 +148,11 @@
 
     // 超链接
     a {
-      color: #0072C1;
+      @include theme('color', $chat-message-color-herf);
       margin: 0 5px;
       cursor: hand;
     }
 
     // end of .content
-  }
-
-  // 聊天提示条
-  .tips {
-    margin: 12px;
-    text-align: center;
-    font-size: 12px;
-
-    span {
-      display: inline-block;
-      padding: 4px;
-      background-color: #cccccc;
-      color: #ffffff;
-      border-radius: 6px;
-    }
-  }
-
-  // 提示条颜色
-  .tips {
-    .tips-primary {
-      background-color: #3986c8;
-    }
-
-    .tips-success {
-      background-color: #49b649;
-    }
-
-    .tips-info {
-      background-color: #5bb6d1;
-    }
-
-    .tips-warning {
-      background-color: #eea948;
-    }
-
-    .tips-danger {
-      background-color: #e24d48;
-    }
-  }
-
-  .name {
-    .admin {
-      background-color: #72D6A0;
-    }
-
-    .owner {
-      background-color: #F2BF25;
-    }
   }
 }

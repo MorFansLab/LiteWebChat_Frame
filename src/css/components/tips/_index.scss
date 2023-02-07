@@ -1,0 +1,27 @@
+@import '../../variable/color/tips';
+
+// 聊天 tips 默认配色
+$chat-message-bg-color-tips: (
+  light:#ccc,
+  dark:rgba(0, 0, 0, 0.3)
+);
+
+$chat-message-color-tips: (
+  light:#fff,
+  dark:#bec5cc
+);
+
+// 聊天提示条
+.tips {
+  margin: 12px;
+  text-align: center;
+  font-size: 12px;
+
+  span {
+    display: inline-block;
+    padding: 4px;
+    @include theme('background-color', $chat-message-bg-color-tips);
+    @include theme('color', $chat-message-color-tips);
+    border-radius: 6px;
+  }
+}
