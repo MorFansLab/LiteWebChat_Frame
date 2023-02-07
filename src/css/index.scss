@@ -16,6 +16,8 @@ body {
   @import './components/tips';
   @import './components/color-tips';
 
+  scroll-behavior: smooth;
+
   padding: 0px;
   width: 100%;
   position: relative;

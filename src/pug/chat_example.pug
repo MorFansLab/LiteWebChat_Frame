@@ -35,6 +35,17 @@ html(lang="en")
         span.name
           span SuperPaxxs
         span.content 它简洁而不简单，能使你开发聊天界面更快速
+      .cright.cmsg
+        img.headIcon.radius(src="../images/B.jpg", ondragstart="return false;", oncontextmenu="return false;")
+        span.name
+          span.htitle.owner(style="margin: 0 4px 0 0;") NEW
+          span SuperPaxxs
+        span.content LiteChat_Frame 拥有暗色模式, 快来试试吧:
+          br
+          br
+          style.
+            .theme-switch{background: none;border: solid 1px;border-radius: 2em;font: inherit;cursor: pointer;color: #fff;}
+          button.theme-switch 切换配色
       .cleft.cmsg
         img.headIcon.radius(ondragstart="return false;" oncontextmenu="return false;" src="../images/A.jpg")
         span.name
@@ -166,3 +177,19 @@ html(lang="en")
         span.name
           span chenjunyu19
         span.content 以上就是全部的特性，以后有空再更
+    script.
+      const btns = document.querySelectorAll('.theme-switch');
+      const html = document.documentElement;
+      const addEvent = btn => {
+        btn.addEventListener('click', e => {
+          let theme = html.getAttribute("litewebchat-theme");
+          if (theme === 'dark') {
+            html.setAttribute("litewebchat-theme", 'light');
+          } else {
+            html.setAttribute("litewebchat-theme", 'dark');
+          }
+        });
+      };
+      btns.forEach(btn => {
+        addEvent(btn);
+      });
