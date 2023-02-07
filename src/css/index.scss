@@ -1,9 +1,15 @@
 @import "normalize.css/normalize";
 
+@import './mixin/theme.scss';
+
+@import './colors.scss';
+
 .lite-chatbox {
   padding: 0px;
   width: 100%;
   position: relative;
+
+  @include theme('background-color', $chat-content-bg-color);
 
   font: {
     family: Helvetica, "PingFang SC", "Microsoft YaHei", sans-serif;
@@ -38,7 +44,8 @@
       margin: 0 48px 0 0;
       border-radius: 20px 0 20px 20px;
       color: white;
-      background: linear-gradient(20deg, #3f8fe1cc 0%, #44d7c9 100%);
+      @include theme('background', $chat-message-bg-color-me);
+
       box-shadow: 5px 5px 15px 0 rgba(102, 102, 102, 0.15);
 
       &::after {
@@ -63,9 +70,10 @@
     .content {
       margin: 0 0 0 48px;
       border-radius: 0 20px 20px 20px;
-      color: #666;
+      @include theme('background', $chat-message-bg-color);
+      @include theme('color', $chat-message-color, );
+
       border: 1px solid rgba(0, 0, 0, 0.05);
-      background: #FFFFFF;
       box-shadow: 5px 5px 15px 0 rgba(102, 102, 102, 0.1);
 
       &::after {
@@ -82,12 +90,11 @@
       height: 34px;
       top: 9px;
       position: absolute;
-      border: 1px solid #c5d4c4;
     }
 
     // 圆形头像
     &.radius {
-      border-radius: 100%;
+      border-radius: 50%;
     }
 
     // .cright & {
@@ -113,7 +120,7 @@
     .htitle {
       display: inline-block;
       padding: 0 3px 0 3px;
-      background-color: #cccccc;
+      @include theme('background-color', $chat-message-bg-color-htitle);
       color: #ffffff;
       border-radius: 4px;
       margin-right: 4px;
@@ -151,7 +158,7 @@
 
     // 超链接
     a {
-      color: #0072C1;
+      @include theme('color', $chat-message-color-herf);
       margin: 0 5px;
       cursor: hand;
     }
@@ -168,8 +175,8 @@
     span {
       display: inline-block;
       padding: 4px;
-      background-color: #cccccc;
-      color: #ffffff;
+      @include theme('background-color', $chat-message-bg-color-tips);
+      @include theme('color', $chat-message-color-tips);
       border-radius: 6px;
     }
   }
@@ -177,33 +184,33 @@
   // 提示条颜色
   .tips {
     .tips-primary {
-      background-color: #3986c8;
+      @include theme('background-color', $chat-message-bg-color-tips-primary);
     }
 
     .tips-success {
-      background-color: #49b649;
+      @include theme('background-color', $chat-message-bg-color-tips-success);
     }
 
     .tips-info {
-      background-color: #5bb6d1;
+      @include theme('background-color', $chat-message-bg-color-tips-info);
     }
 
     .tips-warning {
-      background-color: #eea948;
+      @include theme('background-color', $chat-message-bg-color-tips-warning);
     }
 
     .tips-danger {
-      background-color: #e24d48;
+      @include theme('background-color', $chat-message-bg-color-tips-danger);
     }
   }
 
   .name {
     .admin {
-      background-color: #72D6A0;
+      @include theme('background-color', $chat-message-bg-color-htitle-admin);
     }
 
     .owner {
-      background-color: #F2BF25;
+      @include theme('background-color', $chat-message-bg-color-htitle-owner);
     }
   }
 }
