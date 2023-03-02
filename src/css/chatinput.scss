@@ -1,0 +1,127 @@
+@import './mixin/theme';
+@import './mixin/helper';
+
+@import './variable';
+
+// 聊天区域
+.lite-chatbox {
+  height: calc(100% - 150px);
+
+  //.lite-chatbox内的最后一条消息的margin-bottom设置为20px，离下面远一点
+  >div:last-child {
+    margin-bottom: 20px;
+  }
+}
+
+// 输入框
+.lite-chatinput {
+  width: 100%;
+  height: 150px;
+  position: relative;
+  bottom: 0px;
+  @include theme('background-color', $chat-bg-color-input);
+
+  // 缩小输入框内的图片，方便编辑
+  img {
+    max-width: 150px;
+    max-height: 150px;
+    object-fit: contain;
+  }
+
+  // 聊天区域和输入框的分界线
+  .boundary {
+    cursor: s-resize;
+    margin: 0 auto;
+    border-width: 1px 0px 0px 0px;
+    border-color: rgba(0, 0, 0, 0.2);
+    height: 5px;
+    @include theme('background', $chat-bg-color-input);
+  }
+
+  // 输入框
+  >.chatinput {
+    position: relative;
+    overflow-y: scroll;
+    /* margin: 0px 3px 0px 3px; */
+    width: calc(100% - 6px);
+    margin: auto;
+    /* width: 100%; */
+    height: calc(100% - 75px);
+    /* height: 100%; */
+    border: none;
+    outline: none;
+    resize: none;
+    font-size: 18px;
+    @include theme('color', $chat-color-input);
+    word-break: break-all;
+    overflow-wrap: break-word;
+    padding: 5px;
+    outline: none;
+  }
+
+  // 发送按钮
+  .send {
+    float: right;
+    padding: 4px 20px 4px 20px;
+
+    margin: {
+      right: 12px;
+      top: -2px;
+    }
+
+    color: white;
+    @include theme('background', $chat-message-bg-color-me);
+    box-shadow: 5px 5px 15px 0 rgba(102, 102, 102, 0.1);
+    border: none;
+    border-radius: 4px;
+    @include push-animate;
+  }
+
+  // 输入框上方的输入表情等功能按钮
+  .tool-button {
+    padding: 0px 3px 0px 3px;
+    background: none;
+    border: none;
+    margin: 5px;
+    margin-bottom: 0px;
+    @include push-animate;
+
+    path {
+      fill: rgb(139, 135, 153);
+    }
+
+    svg {
+      width: 18px;
+    }
+  }
+
+  // end of.tool-button
+}
+
+/* 由功能按钮唤起的功能页面 */
+.lite-chatbox-tool {
+  /* border: 5px solid red; */
+  position: absolute;
+  /* bottom: 20px; */
+  margin-left: 3px;
+  z-index: 3;
+}
+
+/* 部分功能页面需要用到的遮罩 */
+#toolMusk {
+  /* border: 3px solid red; */
+  position: absolute;
+  width: 100vw;
+  height: 100vh;
+  top: 0;
+  left: 0;
+  z-index: 2;
+}
+
+.float-left {
+  float: left;
+}
+
+.float-right {
+  float: right;
+}

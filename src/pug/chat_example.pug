@@ -1,0 +1,195 @@
+doctype html
+html(lang="en")
+  head
+    meta(charset="UTF-8")
+    meta(name="viewport", content="width=device-width, initial-scale=1.0")
+    meta(http-equiv="X-UA-Compatible", content="ie=edge")
+    title LiteChat_Frame（轻聊天气泡框架）
+    link(rel="stylesheet", type="text/css", href="../css/litewebchat.min.css")
+  style.
+    html,
+    body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    }
+  body
+    // 主容器
+    .lite-chatbox
+      // cleft 左
+      .cleft.cmsg
+        img.headIcon.radius(ondragstart="return false;" oncontextmenu="return false;" src="../images/A.jpg")
+        span.name
+          span chenjunyu19
+        span.content 这是什么什么鬼？
+      // cright 右
+      .cright.cmsg
+        img.headIcon.radius(ondragstart="return false;" oncontextmenu="return false;" src="../images/B.jpg")
+        span.name
+          span SuperPaxxs
+        span.content LiteChat_Frame（轻聊天气泡框架），一个贼简洁
+          del (简单)
+          | 、美观、易用的 HTML 聊天界面框架
+      .cright.cmsg
+        img.headIcon.radius(ondragstart="return false;" oncontextmenu="return false;" src="../images/B.jpg")
+        span.name
+          span SuperPaxxs
+        span.content 它简洁而不简单，能使你开发聊天界面更快速
+      .cright.cmsg
+        img.headIcon.radius(src="../images/B.jpg", ondragstart="return false;", oncontextmenu="return false;")
+        span.name
+          span.htitle.owner(style="margin: 0 4px 0 0;") NEW
+          span SuperPaxxs
+        span.content LiteChat_Frame 拥有暗色模式, 快来试试吧:
+          br
+          br
+          style.
+            .theme-switch{background: none;border: solid 1px;border-radius: 2em;font: inherit;cursor: pointer;color: #fff;}
+          button.theme-switch 切换配色
+      .cleft.cmsg
+        img.headIcon.radius(ondragstart="return false;" oncontextmenu="return false;" src="../images/A.jpg")
+        span.name
+          span chenjunyu19
+        span.content 直接说，气泡是谁的？
+      .cright.cmsg
+        img.headIcon.radius(ondragstart="return false;" oncontextmenu="return false;" src="../images/B.jpg")
+        span.name
+          span SuperPaxxs
+        span.content  好吧，气泡css来自 Haswikr的 Blog 的机器人气泡 😝
+      .cleft.cmsg
+        img.headIcon.radius(ondragstart="return false;" oncontextmenu="return false;" src="../images/H.jpg")
+        span.name
+          span.htitle.admin admin
+          span Haswikr
+        span.content 当初调色煞费苦心
+      .cleft.cmsg
+        img.headIcon.radius(ondragstart="return false;" oncontextmenu="return false;" src="../images/O.jpg")
+        span.name
+          span.htitle.owner owner
+          span Sonui
+        span.content 这设计真棒
+      .cleft.cmsg
+        img.headIcon.radius(ondragstart="return false;" oncontextmenu="return false;" src="../images/A.jpg")
+        span.name
+          span.htitle menber123456789789
+          span chenjunyu19
+        span.content 那咋用啊？
+      .cright.cmsg
+        img.headIcon.radius(ondragstart="return false;" oncontextmenu="return false;" src="../images/B.jpg")
+        span.name
+          span SuperPaxxs
+        span.content <del>诶哟少年你找对人了</del><br/><br/>如果只是使用，那非常简单。<h2>使用指北</h2><br/>1. 引用 css： litechat.css<br/><br/>&lt;link type=&quot;text/css&quot; href=&quot;//lab.morfans.cn/LiteWebChat_Frame/litewebchat.css&quot; rel=&quot;stylesheet&quot; /&gt;<br/>或<br/>&lt;link type=&quot;text/css&quot; href=&quot;//lab.morfans.cn/LiteWebChat_Frame/litewebchat.min.css&quot; rel=&quot;stylesheet&quot; /&gt;<br/><br/>2. 创建一个 DIV ，用来容纳聊天对话，目的是不让 css 干扰页面其他内容：<br/><br/>&lt;div class=&quot;lite-chatbox&quot;&gt;<br/>...<br/>&lt;/div&gt;<br/><br/>话说你就不会看下源码吗...<b>楼下是特性演示</b>
+      .tips
+        span Chenjunyu19 退出了聊天室并撩了你一把
+      .cleft.cmsg
+        img.headIcon.radius(ondragstart="return false;" oncontextmenu="return false;" src="../images/A.jpg")
+        span.name
+          span 空消息测试1
+        span.content
+      .cright.cmsg
+        img.headIcon.radius(ondragstart="return false;" oncontextmenu="return false;" src="../images/B.jpg")
+        span.name
+          span 空消息测试2
+        span.content &nbsp;
+      .cleft.cmsg
+        img.headIcon.radius(ondragstart="return false;" oncontextmenu="return false;" src="../images/A.jpg")
+        span.name
+          span chenjunyu19
+        span.content 注意，上面两条空消息的消息内容代码不一样
+      .cright.cmsg
+        img.headIcon(ondragstart="return false;" oncontextmenu="return false;" src="../images/B.jpg")
+        span.name
+          span SuperPaxxs
+        span.content 头像换成方形请去掉 radius
+      .cleft.cmsg
+        img.headIcon(ondragstart="return false;" oncontextmenu="return false;" src="../images/A.jpg")
+        span.name
+          span chenjunyu19
+        span.content 我是左边的方形头像
+      .cright.cmsg
+        img.headIcon.radius(ondragstart="return false;" oncontextmenu="return false;" src="../images/B.jpg")
+        span.name
+          span 图片消息
+        span.content
+          img(src="../images/img2.png")
+      .cleft.cmsg
+        img.headIcon.radius(ondragstart="return false;" oncontextmenu="return false;" src="../images/A.jpg")
+        span.name
+          span 图片消息2
+        span.content
+          img(src="../images/img.png")
+          <br>
+          | 图片带文字是可以的#[del （废话）]
+      .cright.cmsg
+        img.headIcon.radius(ondragstart="return false;" oncontextmenu="return false;" src="../images/B.jpg")
+        span.name
+          span 右边长消息
+        span.content 我的消息真的超级长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长长欸
+      .cleft.cmsg
+        img.headIcon.radius(ondragstart="return false;" oncontextmenu="return false;" src="../images/A.jpg")
+        span.name
+          span 左边长消息
+        span.content 这么巧鸭，我的也超超超超超超超超超超超超超超超超超超超超超超超超超超超超超超超超超超超超超超超超超超超超超超超超超超超超超超超超超超超超超超超超超超超超超超超超超超超超超超超超超超超超超超超超超超超超超超超超超超超超超超超超超超超超超超超超超超超超超超超超超超超超超超超超超超超超超超超超超超超超超超超超超超超超超级长的欸
+      .tips
+        span.tips-danger 系统消息：左/右边长消息被管理员批判一番……
+      .tips
+        span 系统消息：normal
+      .tips
+        span.tips-primary 系统消息：primary
+      .tips
+        span.tips-success 系统消息：success
+      .tips
+        span.tips-info 系统消息：info
+      .tips
+        span.tips-warning 系统消息：warning
+      .tips
+        span.tips-danger 系统消息：danger
+      .cright.cmsg
+        img.headIcon.radius(ondragstart="return false;" oncontextmenu="return false;" src="../images/B.jpg")
+        span.name
+          span 带有超链接的消息测试
+        span.content 当然是可以有超链接的。例子在这里：
+          br
+          a(href="http://morfans.cn" target="_blank") 你敢点我吗
+          | ← 戳这里
+      .cleft.cmsg
+        img.headIcon.radius(ondragstart="return false;" oncontextmenu="return false;" src="../images/A.jpg")
+        span.name
+          span 全符号测试
+        span.content 。，；？：！‘’“”@ˆ.,;?:!&#x27;&quot;〝〞﹫ˇ
+      .cleft.cmsg
+        img.headIcon.radius(ondragstart="return false;" oncontextmenu="return false;" src="../images/A.jpg")
+        span.name
+          span 全emoji测试
+        span.content 😀😝🐂🍺
+      .cright.cmsg
+        img.headIcon.radius(ondragstart="return false;" oncontextmenu="return false;" src="../images/B.jpg")
+        span.name
+          span &nbsp;
+        span.content 当无昵时候需要 &amp;nbsp; 填充
+      .cright.cmsg
+        img.headIcon.radius(ondragstart="return false;" oncontextmenu="return false;" src="../images/B.jpg")
+        span.name
+          span SuperPaxxs
+        span.content 换行用 &lt;br&gt;，HTML 你懂的..
+      .cleft.cmsg
+        img.headIcon.radius(ondragstart="return false;" oncontextmenu="return false;" src="../images/A.jpg")
+        span.name
+          span chenjunyu19
+        span.content 以上就是全部的特性，以后有空再更
+    script.
+      const btns = document.querySelectorAll('.theme-switch');
+      const html = document.documentElement;
+      const addEvent = btn => {
+        btn.addEventListener('click', e => {
+          let theme = html.getAttribute("litewebchat-theme");
+          if (theme === 'dark') {
+            html.setAttribute("litewebchat-theme", 'light');
+          } else {
+            html.setAttribute("litewebchat-theme", 'dark');
+          }
+        });
+      };
+      btns.forEach(btn => {
+        addEvent(btn);
+      });

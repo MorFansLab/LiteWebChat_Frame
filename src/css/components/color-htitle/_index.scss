@@ -1,0 +1,15 @@
+@import '../../variable/color/htitle';
+
+$htitle-color-map: (
+  admin: $chat-message-bg-color-htitle-admin,
+  owner: $chat-message-bg-color-htitle-owner
+);
+
+
+.htitle {
+  @each $type in map-keys($htitle-color-map) {
+    &.#{$type} {
+      @include theme('background-color', map-get($htitle-color-map, $type));
+    }
+  }
+}
