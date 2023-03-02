@@ -315,6 +315,13 @@ function inputFile(settings) {
   } = settings;
 
   if (!enable) {
+    // 如果不允许上传，那么删除事件
+    imageBtn.onclick = () => {};
+    fileBtn.onclick = () => {};
+    downChild.ondrop = null;
+    downChild.ondragover = null;
+    downChild.ondragleave = null;
+
     return;
   }
 
@@ -364,8 +371,6 @@ function inputFile(settings) {
   // -----------------拖拽上传-----------------
   if (!settings.enableDrop) {
     // 如果不允许上传，那么删除事件
-    imageBtn.onclick = null;
-    fileBtn.onclick = null;
     // 删除拖拽事件
     downChild.ondrop = null;
     downChild.ondragover = null;
