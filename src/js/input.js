@@ -389,7 +389,7 @@ function inputFile(settings) {
   // 当downChild有文件被拖入时，改变downChild的边框颜色
   downChild.ondragover = function (e) {
     e.preventDefault();
-    downChild.style.outline = "5px solid #1E90FF";
+    downChild.style.outline = "3px solid #1E90FF";
     downChild.style.outlineOffset = "-6px";
   };
 
