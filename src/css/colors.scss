@@ -1,0 +1,66 @@
+// 聊天背景色
+$chat-content-bg-color: (
+  light: #f8f9fa,
+  dark:#131415
+);
+// 聊天消息类
+// 聊天气泡双方背景
+$chat-message-bg-color: (
+  light:#fff,
+  dark:#22242a
+);
+$chat-message-bg-color-me: (
+  light:linear-gradient(20deg, #3f8fe1cc 0%, #44d7c9 100%),
+  dark:linear-gradient(20deg, rgba(25, 91, 159, 0.8) 0px, rgb(33, 154, 146) 100%)
+);
+// 聊天气泡对方前景
+$chat-message-color: (
+  light:#373737,
+  dark:#d4d4d4
+);
+// 聊天提示
+$chat-message-bg-color-tips: (
+  light:#ccc,
+  dark:rgba(0, 0, 0, 0.3)
+);
+$chat-message-color-tips: (
+  light:#fff,
+  dark:#bec5cc
+);
+$chat-message-bg-color-tips-primary: (
+  light:#3986c8,
+  dark:rgb(68, 127, 178)
+);
+$chat-message-bg-color-tips-success: (
+  light:#49b649,
+  dark:rgb(102, 166, 81)
+);
+$chat-message-bg-color-tips-info: (
+  light:#5bb6d1,
+  dark:rgb(63, 136, 158)
+);
+$chat-message-bg-color-tips-warning: (
+  light:#eea948,
+  dark:rgb(175, 119, 40)
+);
+$chat-message-bg-color-tips-danger: (
+  light:#e24d48,
+  dark:rgb(173, 53, 49)
+);
+$chat-message-color-herf: (
+  light: #0072C1,
+  dark: #00c3ff
+);
+// 头衔
+$chat-message-bg-color-htitle: (
+  light:#cccccc,
+  dark:rgb(76, 80, 82)
+);
+$chat-message-bg-color-htitle-admin: (
+  light:#72D6A0,
+  dark:rgb(60, 145, 110)
+);
+$chat-message-bg-color-htitle-owner: (
+  light:#F2BF25,
+  dark:rgb(154, 124, 33)
+);
