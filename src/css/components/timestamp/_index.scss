@@ -1,0 +1,63 @@
+.cmsg {
+  .content {
+    .text-timestamp {
+      font-size: 10px;
+      text-align: right;
+      margin-bottom: -5px;
+      color: #dadada;
+      transition: 0.3s;
+
+      .icon-check {
+        height: 14px;
+        width: 14px;
+        vertical-align: middle;
+        margin: -3px -3px 0 3px;
+
+        #icon-double-check,
+        #icon-check {
+          fill: #dadada;
+        }
+      }
+    }
+  }
+
+  .cleft {
+    .text-timestamp {
+      color: rgb(160, 160, 160);
+
+      .icon-check {
+
+        #icon-double-check,
+        #icon-check {
+          fill: rgb(160, 160, 160);
+        }
+      }
+    }
+
+    // .content:hover {
+    //   .text-timestamp {
+    //     color: rgb(0, 0, 0);
+
+    //     .icon-check {
+
+    //       #icon-double-checkmark {
+    //         fill: rgb(0, 0, 0);
+    //       }
+    //     }
+    //   }
+    // }
+  }
+}
+
+
+// .content:hover {
+//   .text-timestamp {
+//     color: rgb(255, 255, 255);
+
+//     .icon-check {
+//       #icon-double-checkmark {
+//         fill: rgb(255, 255, 255);
+//       }
+//     }
+//   }
+// }

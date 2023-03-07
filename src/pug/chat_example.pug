@@ -172,11 +172,41 @@ html(lang="en")
         span.name
           span SuperPaxxs
         span.content 换行用 &lt;br&gt;，HTML 你懂的..
+      .cright.cmsg
+        img.headIcon.radius(ondragstart="return false;" oncontextmenu="return false;" src="../images/B.jpg")
+        span.name
+          span.htitle.admin admin
+          span SuperPaxxs
+        div.content
+          span 带时间戳显示 br 的简单消息
+          .text-timestamp
+            span 21:00
+            span
+              svg.icon-check(xmlns="http://www.w3.org/2000/svg", xmlns:xlink="http://www.w3.org/1999/xlink", version="1.1", width="24", height="24", viewBox="0 0 24 24")
+                path#icon-double-check(d="M18 7l-1.41-1.41-6.34 6.34 1.41 1.41L18 7zm4.24-1.41L11.66 16.17 7.48 12l-1.41 1.41L11.66 19l12-12-1.42-1.41zM.41 13.41L6 19l1.41-1.41L1.83 12 .41 13.41z")
+      .cright.cmsg
+        img.headIcon.radius(ondragstart="return false;" oncontextmenu="return false;" src="../images/B.jpg")
+        span.name
+          span.htitle.admin admin
+          span SuperPaxxs
+        div.content
+          span 带时间戳显示的消息
+          .text-timestamp
+            span 21:00
+            span
+              svg.icon-check(xmlns="http://www.w3.org/2000/svg", xmlns:xlink="http://www.w3.org/1999/xlink", version="1.1", width="24", height="24", viewBox="0 0 24 24")
+                path#icon-double-check(d="M18 7l-1.41-1.41-6.34 6.34 1.41 1.41L18 7zm4.24-1.41L11.66 16.17 7.48 12l-1.41 1.41L11.66 19l12-12-1.42-1.41zM.41 13.41L6 19l1.41-1.41L1.83 12 .41 13.41z")
       .cleft.cmsg
         img.headIcon.radius(ondragstart="return false;" oncontextmenu="return false;" src="../images/A.jpg")
         span.name
           span chenjunyu19
-        span.content 以上就是全部的特性，以后有空再更
+        span.content
+          span 以上就是全部的特性，以后有空再更
+          .text-timestamp
+            span 21:00
+            span
+              svg.icon-check(xmlns="http://www.w3.org/2000/svg", xmlns:xlink="http://www.w3.org/1999/xlink", version="1.1", width="24", height="24", viewBox="0 0 24 24")
+                path#icon-check(d="M21,7L9,19L3.5,13.5L4.91,12.09L9,16.17L19.59,5.59L21,7Z")
     script.
       const btns = document.querySelectorAll('.theme-switch');
       const html = document.documentElement;

@@ -16,6 +16,15 @@ body {
   @import './components/tips';
   @import './components/color-tips';
 
+  // 时间戳
+  @import './components/timestamp';
+
+  .name {
+    // 头衔
+    @import './components/htitle';
+    @import './components/color-htitle';
+  }
+
   scroll-behavior: smooth;
 
   padding: 0px;
@@ -119,10 +128,6 @@ body {
     font-size: 12px;
     display: block;
     line-height: 18px;
-
-    // 头衔
-    @import './components/htitle';
-    @import './components/color-htitle';
     // end of .name
   }
 
