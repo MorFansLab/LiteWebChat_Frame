@@ -1,10 +1,12 @@
+@import '../../variable/color/timestamp';
+
 .cmsg {
   .content {
     .text-timestamp {
       font-size: 10px;
       text-align: right;
       margin-bottom: -5px;
-      color: #dadada;
+      @include theme('color',$chat-message-color-timestamp-me);
       transition: 0.3s;
 
       .icon-check {
@@ -15,49 +17,26 @@
 
         #icon-double-check,
         #icon-check {
-          fill: #dadada;
+          @include theme('fill',$chat-message-color-timestamp-me);
         }
       }
     }
   }
 
-  .cleft {
+  &.cleft {
     .text-timestamp {
       color: rgb(160, 160, 160);
-
+      @include theme('color',$chat-message-color-timestamp);
       .icon-check {
 
         #icon-double-check,
         #icon-check {
-          fill: rgb(160, 160, 160);
+          @include theme('fill',$chat-message-color-timestamp);
         }
       }
     }
-
-    // .content:hover {
-    //   .text-timestamp {
-    //     color: rgb(0, 0, 0);
-
-    //     .icon-check {
-
-    //       #icon-double-checkmark {
-    //         fill: rgb(0, 0, 0);
-    //       }
-    //     }
-    //   }
-    // }
   }
 }
 
 
-// .content:hover {
-//   .text-timestamp {
-//     color: rgb(255, 255, 255);
 
-//     .icon-check {
-//       #icon-double-checkmark {
-//         fill: rgb(255, 255, 255);
-//       }
-//     }
-//   }
-// }
